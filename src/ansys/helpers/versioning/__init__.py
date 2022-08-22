@@ -1,7 +1,7 @@
 """
-Helpers.
+PyAnsys Helpers Versioning.
 
-Versioning
+Utilities for backwards and forward server support.
 """
 
 try:
