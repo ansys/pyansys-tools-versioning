@@ -18,8 +18,8 @@ PyHelpers Versioning
    :target: https://codecov.io/gh/pyansys/pyhelpers-versioning
    :alt: Codecov
 
-.. |GH-CI| image:: https://github.com/pyansys/pyhelpers-versioning/actions/workflows/ci.yml/badge.svg
-   :target: https://github.com/pyansys/pyhelpers-versioning/actions/workflows/ci.yml
+.. |GH-CI| image:: https://github.com/pyansys/pyansys-helpers-versioning/actions/workflows/ci_cd.yml/badge.svg
+   :target: https://github.com/pyansys/pyansys-helpers-versioning/actions/workflows/ci_cd.yml
    :alt: GH-CI
 
 .. |MIT| image:: https://img.shields.io/badge/License-MIT-yellow.svg
