@@ -58,14 +58,5 @@ def test_version_string_as_tuple_syntax_error(version_numbers):
     )
 
 
-@given(st_version_pairs)
-def test_server_meets_version(version_pairs):
-    server_version, required_version = list(map(sanitize_version_tuple, map(tuple, version_pairs)))
-
-    meets_version = True
-    for server_version_number, required_version_number in zip(server_version, required_version):
-        if server_version_number < required_version_number:
-            meets_version = False
-            break
-
-    assert meets_version == server_meets_version(server_version, required_version)
+def test_equal_version_is_valid():
+    assert server_meets_version("0.0.0", "0.0.0") == True

@@ -1,6 +1,6 @@
 """A module containing various utilities."""
 
-from ansys.helpers.versioning.exceptions import VersionSyntaxError
+from ansys.helpers.versioning.exceptions import VersionError, VersionSyntaxError
 
 
 def sanitize_version_string(version_string):
@@ -169,17 +169,87 @@ def server_meets_version(server_version, required_version):
 
     """
     # Sanitize server and required version inputs
-    servers_version, required_version = [
+    server_version, required_version = [
         version_string_as_tuple(version)
         if isinstance(version, str)
         else sanitize_version_tuple(version)
         for version in [server_version, required_version]
     ]
 
-    # Compare both version numbers
-    for server_version_number, required_version_number in zip(server_version, required_version):
+    for ith_num, (server_version_number, required_version_number) in enumerate(
+        zip(server_version, required_version), start=1
+    ):
 
-        if server_version_number < required_version_number:
+        # Keep comparing if both numbers are the same
+        if server_version_number == required_version_number and ith_num != 3:
+            continue
+
+        # If all numbers are the same, server and required version are exactly
+        # the same
+        elif server_version_number == required_version_number and ith_num == 3:
+            return True
+
+        # If a server version number is higher, the iteration stops
+        elif server_version_number > required_version_number:
+            return True
+
+        # If a version number is lower, stop the iteration
+        elif server_version_number < required_version_number:
             return False
 
-    return True
+
+def requires_version(version, VERSION_MAP=None):
+    """Ensure the method called matches a certain version.
+
+    Parameters
+    ----------
+    version : str, tuple
+        A string or tuple represeting the minimum required version.
+    VERSION_MAP : dict, optional
+        A dictionary relating server version and ANSYS unified install version.
+
+    Raises
+    ------
+    AttributeError
+        Decorated class method requires ``_server_version`` attribute.
+    VersionError
+        Decorated class method is not supported by server version.
+
+    """
+
+    def decorator(func):
+
+        # Sanitize input version
+        min_version = (
+            sanitize_version_tuple(version)
+            if isinstance(version, tuple)
+            else version_string_as_tuple(version)
+        )
+
+        def wrapper(self, *args, **kwargs):
+            """Call the original function."""
+            # Check that the object has a '_server_version' attribute
+            if not hasattr(self, "_server_version"):
+                raise AttributeError(
+                    "Decorated class method must have ``_server_version`` attribute."
+                )
+
+            # Raise exceptions if server version is not valid
+            if not server_meets_version(self._server_version, min_version):
+
+                # Provide a generic version error message
+                if not VERSION_MAP:
+                    raise VersionError(
+                        f"Class method ``{func.__name__}`` requires server version >= {version_tuple_as_string(min_version)}."
+                    )
+
+                # Provide a better error message if VERSION_MAP is provided
+                raise VersionError(
+                    f"Class method ``{func.__name__}`` requires server version >= {VERSION_MAP[min_version]}."
+                )
+
+            return func(self, *args, **kwargs)
+
+        return wrapper
+
+    return decorator
