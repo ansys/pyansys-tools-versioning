@@ -6,7 +6,7 @@ build-backend = "flit_core.buildapi"
 # Check https://flit.readthedocs.io/en/latest/pyproject_toml.html for all available sections
 name = "ansys-helpers-versioning"
 version = "0.1.dev0"
-description = "Utilities for backwards and forwards server support."
+dynamic = ["description"]
 readme = "README.rst"
 requires-python = ">=3.7"
 license = {file = "LICENSE"}
@@ -24,7 +24,7 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 dependencies = [
-    "importlib-metadata >=4.0",
+    "importlib-metadata >=4.12.0",
 ]
 
 [tool.flit.module]
