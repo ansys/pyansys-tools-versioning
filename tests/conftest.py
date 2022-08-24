@@ -10,7 +10,7 @@ VERSION_MAP = {
 """A dictionary relating server version and their unified install versions."""
 
 
-class Server:
+class MockupServer:
     """A testing class for modelling servers."""
 
     def __init__(self, server_version):
@@ -30,7 +30,7 @@ class Server:
 
 @pytest.fixture
 def server_with_all_methods_available():
-    return Server(server_version="1.0.0")
+    return MockupServer(server_version="1.0.0")
 
 
 @pytest.fixture
@@ -42,9 +42,9 @@ def server_without_server_version_attribute(server_with_all_methods_available):
 
 @pytest.fixture
 def server_with_outdated_foo_method():
-    return Server(server_version="0.2.0")
+    return MockupServer(server_version="0.2.0")
 
 
 @pytest.fixture
 def server_with_outdated_methods():
-    return Server(server_version=(0, 0, 1))
+    return MockupServer(server_version=(0, 0, 1))
