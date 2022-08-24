@@ -2,7 +2,7 @@
 
 
 class VersionSyntaxError(Exception):
-    """An exception to be raised when an invalid version syntaxt is found."""
+    """An exception to be raised when an invalid version syntax is found."""
 
     def __init__(self, msg):
         """Initialize the exception.
