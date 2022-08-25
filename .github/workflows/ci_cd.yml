@@ -96,7 +96,21 @@ jobs:
           python -m pip install --upgrade pip flit tox
       - name: Generate the documentation with tox
         run: tox -e doc
-
+      - name: Upload documentation
+        uses: actions/upload-artifact@v3
+        with:
+          name: HTML-Documentation
+          path: .tox/doc_out
+          retention-days: 7
+      - name: Deploy documentation to gh-pages
+        if: github.ref == 'refs/heads/main'
+        uses: JamesIves/github-pages-deploy-action@v4.4.0
+        with:
+          token: ${{ secrets.github_token }}
+          branch: gh-pages
+          folder: .tox/doc_out
+          clean: true
+          single-commit: true
 
   build:
     name: Build library
