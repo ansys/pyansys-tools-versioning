@@ -4,7 +4,7 @@ build-backend = "flit_core.buildapi"
 
 [project]
 # Check https://flit.readthedocs.io/en/latest/pyproject_toml.html for all available sections
-name = "pyansys-tools-versioning"
+name = "ansys-tools-versioning"
 version = "0.1.dev0"
 dynamic = ["description"]
 readme = "README.rst"
@@ -16,7 +16,6 @@ authors = [
 maintainers = [
     {name = "PyAnsys developers", email = "pyansys.maintainers@ansys.com"},
 ]
-
 classifiers = [
     "Development Status :: 4 - Beta",
     "Programming Language :: Python :: 3.7",
