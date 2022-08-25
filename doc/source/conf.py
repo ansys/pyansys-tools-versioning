@@ -1,12 +1,12 @@
 """Sphinx documentation configuration file."""
 from datetime import datetime
 
-from pyansys_sphinx_theme import pyansys_logo_black
+from ansys_sphinx_theme import pyansys_logo_black
 
-from ansys.helpers.versioning import __version__
+from ansys.tools.versioning import __version__
 
 # Project information
-project = "ansys-helpers-versioning"
+project = "ansys-tools-versioning"
 copyright = f"(c) {datetime.now().year} ANSYS, Inc. All rights reserved"
 author = "ANSYS, Inc."
 release = version = __version__
@@ -15,11 +15,11 @@ release = version = __version__
 html_logo = pyansys_logo_black
 html_theme = "pyansys_sphinx_theme"
 
-html_short_title = html_title = "ansys-helpers-versioning"
+html_short_title = html_title = "ansys-tools-versioning"
 
 # specify the location of your github repo
 html_theme_options = {
-    "github_url": "https://github.com/pyansys/pyansys-helpers-versioning",
+    "github_url": "https://github.com/pyansys/pyansys-tools-versioning",
     "show_prev_next": False,
     "show_breadcrumbs": True,
     "additional_breadcrumbs": [

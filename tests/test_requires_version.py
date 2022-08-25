@@ -1,6 +1,6 @@
 import pytest
 
-from ansys.helpers.versioning.exceptions import VersionError
+from ansys.tools.versioning.exceptions import VersionError
 
 
 def test_not_implemented_server_version_attribute(server_without_server_version_attribute):

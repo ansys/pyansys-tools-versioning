@@ -1,6 +1,6 @@
 """A module containing various utilities."""
 
-from ansys.helpers.versioning.exceptions import VersionError, VersionSyntaxError
+from ansys.tools.versioning.exceptions import VersionError, VersionSyntaxError
 
 
 def sanitize_version_string(version_string):

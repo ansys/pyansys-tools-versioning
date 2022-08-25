@@ -4,7 +4,7 @@ build-backend = "flit_core.buildapi"
 
 [project]
 # Check https://flit.readthedocs.io/en/latest/pyproject_toml.html for all available sections
-name = "ansys-helpers-versioning"
+name = "pyansys-tools-versioning"
 version = "0.1.dev0"
 dynamic = ["description"]
 readme = "README.rst"
@@ -19,7 +19,10 @@ maintainers = [
 
 classifiers = [
     "Development Status :: 4 - Beta",
-    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
@@ -28,10 +31,10 @@ dependencies = [
 ]
 
 [tool.flit.module]
-name = "ansys.helpers.versioning"
+name = "ansys.tools.versioning"
 
 [project.urls]
-Source = "https://github.com/pyansys/pyansys-helpers-versioning"
+Source = "https://github.com/pyansys/pyansys-tools-versioning"
 
 [tool.black]
 line-length = 100
@@ -44,7 +47,7 @@ default_section = "THIRDPARTY"
 src_paths = ["doc", "src", "tests"]
 
 [tool.coverage.run]
-source = ["ansys.helpers"]
+source = ["ansys.tools.versioning"]
 
 [tool.coverage.report]
 show_missing = true

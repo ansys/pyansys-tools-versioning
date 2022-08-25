@@ -2,7 +2,7 @@ from copy import deepcopy
 
 import pytest
 
-from ansys.helpers.versioning import requires_version
+from ansys.tools.versioning import requires_version
 
 VERSION_MAP = {
     (0, 2, 1): "20XYRZ",
