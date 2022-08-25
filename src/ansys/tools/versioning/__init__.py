@@ -1,5 +1,5 @@
 """
-PyAnsys Helpers Versioning.
+PyAnsys Tools Versioning.
 
 Utilities for backwards and forwards server support.
 """
@@ -9,7 +9,7 @@ try:
 except ModuleNotFoundError:
     import importlib_metadata
 
-from ansys.helpers.versioning.utils import requires_version
+from ansys.tools.versioning.utils import requires_version
 
 __version__ = importlib_metadata.version(__name__.replace(".", "-"))
 __all__ = ["requires_version"]
