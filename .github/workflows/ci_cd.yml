@@ -84,26 +84,23 @@ jobs:
       - name: Test with tox
         run: tox -e ${{ matrix.cfg.toxenv }}-${{ matrix.cfg.toxargs }}
 
-      - name: Store version (Linux)
+      - name: Activate tox env (Linux)
         if: ${{ runner.os == 'Linux' }}
         run: |
           source .tox/${{ matrix.cfg.toxenv }}-${{ matrix.cfg.toxargs }}/bin/activate
-          echo "::set-output name=PYANSYS_TOOLS_VERSIONING_VERSION::$(python -c "from ansys.tools.versioning import __version__; print(__version__)")"
-          deactivate
-        id: version
 
-      - name: Store version (Windows)
+      - name: Activate tox env (Windows)
         if: ${{ runner.os == 'Windows' }}
         run: |
           .tox\${{ matrix.cfg.toxenv }}-${{ matrix.cfg.toxargs }}\Scripts\Activate.ps1
-          echo "::set-output name=PYANSYS_TOOLS_VERSIONING_VERSION::$(python -c "from ansys.tools.versioning import __version__; print(__version__)")"
-          deactivate
-        id: version
 
-      - name: Store version (MacOS)
+      - name: Activate tox env (MacOS)
         if: ${{ runner.os == 'macOS' }}
         run: |
           source .tox/${{ matrix.cfg.toxenv }}-${{ matrix.cfg.toxargs }}/bin/activate
+
+      - name: Store version and deactivate tox env
+        run: |
           echo "::set-output name=PYANSYS_TOOLS_VERSIONING_VERSION::$(python -c "from ansys.tools.versioning import __version__; print(__version__)")"
           deactivate
         id: version
