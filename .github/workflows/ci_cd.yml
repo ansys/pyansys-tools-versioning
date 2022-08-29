@@ -170,7 +170,7 @@ jobs:
       - name: Upload wheel and binaries
         uses: actions/upload-artifact@v3
         with:
-          name: pyansys-tools-versioning-packages
+          name: ${{ env.PACKAGE_NAME }}-packages
           path: dist/
           retention-days: 7
 
