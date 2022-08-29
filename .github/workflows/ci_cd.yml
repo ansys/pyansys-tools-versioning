@@ -9,6 +9,7 @@ on:
 
 env:
   MAIN_PYTHON_VERSION: '3.10'
+  PACKAGE_NAME: 'pyansys-tools-versioning'
 
 
 concurrency:
@@ -84,25 +85,14 @@ jobs:
       - name: Test with tox
         run: tox -e ${{ matrix.cfg.toxenv }}-${{ matrix.cfg.toxargs }}
 
-      - name: Activate tox env (Linux)
-        if: ${{ runner.os == 'Linux' }}
+      - name: Install package
         run: |
-          source .tox/${{ matrix.cfg.toxenv }}-${{ matrix.cfg.toxargs }}/bin/activate
+          pip install -r requirements/requirements_build.txt
+          pip install .
 
-      - name: Activate tox env (Windows)
-        if: ${{ runner.os == 'Windows' }}
-        run: |
-          .tox\${{ matrix.cfg.toxenv }}-${{ matrix.cfg.toxargs }}\Scripts\Activate.ps1
-
-      - name: Activate tox env (MacOS)
-        if: ${{ runner.os == 'macOS' }}
-        run: |
-          source .tox/${{ matrix.cfg.toxenv }}-${{ matrix.cfg.toxargs }}/bin/activate
-
-      - name: Store version and deactivate tox env
+      - name: Store version
         run: |
           echo "::set-output name=PYANSYS_TOOLS_VERSIONING_VERSION::$(python -c "from ansys.tools.versioning import __version__; print(__version__)")"
-          deactivate
         id: version
 
       - name: Generate wheelhouse
@@ -113,7 +103,7 @@ jobs:
         uses: vimtor/action-zip@v1
         with:
           files: wheelhouse
-          dest: ${{ env.PACKAGE_NAME }}-v${{ steps.version.outputs.PYANSYS_TOOLS_VERSIONING_VERSION }}-wheelhouse-${{ runner.os }}-${{ matrix.python-version }}.zip
+          dest: ${{ env.PACKAGE_NAME }}-v${{ steps.version.outputs.PYANSYS_TOOLS_VERSIONING_VERSION }}-wheelhouse-${{ runner.os }}-${{ matrix.cfg.python-version }}.zip
 
       - name: Upload Wheelhouse
         uses: actions/upload-artifact@v3
