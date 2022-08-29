@@ -9,6 +9,7 @@ on:
 
 env:
   MAIN_PYTHON_VERSION: '3.10'
+  PACKAGE_NAME: 'pyansys-tools-versioning'
 
 
 concurrency:
@@ -56,10 +57,11 @@ jobs:
 
   tests:
     name: Tests
+    needs: [style]
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [windows-latest, ubuntu-latest]
+        os: [windows-latest, ubuntu-latest, macos-latest]
         cfg:
           - {python-version: "3.7", toxenv: "py37", toxargs: "cov"}
           - {python-version: "3.8", toxenv: "py38", toxargs: "cov"}
@@ -83,11 +85,37 @@ jobs:
       - name: Test with tox
         run: tox -e ${{ matrix.cfg.toxenv }}-${{ matrix.cfg.toxargs }}
 
+      - name: Install package
+        run: |
+          pip install -r requirements/requirements_build.txt
+          pip install .
+
+      - name: Store version
+        run: |
+          echo "::set-output name=PYANSYS_TOOLS_VERSIONING_VERSION::$(python -c "from ansys.tools.versioning import __version__; print(__version__)")"
+        id: version
+
+      - name: Generate wheelhouse
+        run: |
+          pip wheel . -w wheelhouse
+
+      - name: Zip wheelhouse
+        uses: vimtor/action-zip@v1
+        with:
+          files: wheelhouse
+          dest: ${{ env.PACKAGE_NAME }}-v${{ steps.version.outputs.PYANSYS_TOOLS_VERSIONING_VERSION }}-wheelhouse-${{ runner.os }}-${{ matrix.cfg.python-version }}.zip
+
+      - name: Upload Wheelhouse
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ env.PACKAGE_NAME }}-v${{ steps.version.outputs.PYANSYS_TOOLS_VERSIONING_VERSION }}-wheelhouse-${{ runner.os }}-${{ matrix.cfg.python-version }}
+          path: '*.zip'
+          retention-days: 7
 
   docs:
     name: Documentation
     runs-on: ubuntu-latest
-    needs: docs-style
+    needs: [docs-style]
     steps:
       - uses: actions/checkout@v3
 
@@ -122,6 +150,7 @@ jobs:
 
   build:
     name: Build library
+    needs: [tests, docs]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -137,3 +166,43 @@ jobs:
           python -m pip install -r requirements/requirements_build.txt
           flit build
           python -m twine check dist/*
+
+      - name: Upload wheel and binaries
+        uses: actions/upload-artifact@v3
+        with:
+          name: pyansys-tools-versioning-packages
+          path: dist/
+          retention-days: 7
+
+  release:
+    name: Release project
+    if: github.event_name == 'push' && contains(github.ref, 'refs/tags')
+    needs: [build]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.MAIN_PYTHON_VERSION }}
+
+      - uses: actions/download-artifact@v3
+
+      - name: Display structure of downloaded files
+        run: ls -R
+
+      - name: Upload to Public PyPi
+        run: |
+          pip install twine
+          twine upload --skip-existing ./**/*.whl
+          twine upload --skip-existing ./**/*.tar.gz
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            ./**/*.whl
+            ./**/*.tar.gz
+            ./**/*.zip
