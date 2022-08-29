@@ -11,5 +11,5 @@ except ModuleNotFoundError:
 
 from ansys.tools.versioning.utils import requires_version
 
-__version__ = importlib_metadata.version(__name__.replace(".", "-"))
+__version__ = importlib_metadata.version("pyansys-tools-versioning")
 __all__ = ["requires_version"]

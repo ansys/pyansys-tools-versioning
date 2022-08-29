@@ -53,7 +53,7 @@ Then, you can simply execute:
 
 .. code:: bash
 
-    python -m pip install ansys-tools-versioning
+    python -m pip install pyansys-tools-versioning
 
 For developers
 ^^^^^^^^^^^^^^
@@ -100,7 +100,7 @@ need to follow these steps:
 
     .. code:: bash
     
-        python -m pip install --editable ansys-tools-versioning
+        python -m pip install --editable pyansys-tools-versioning
     
     5. Finally, verify your development installation by running:
 
