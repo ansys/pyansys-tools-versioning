@@ -126,10 +126,9 @@ jobs:
         uses: codecov/codecov-action@v3
         if: |
           (matrix.cfg.python-version == env.MAIN_PYTHON_VERSION) &&
-          (runner.os ==  'Linux') &&
-          (github.ref == 'refs/heads/main')
+          (runner.os ==  'Linux')
         with:
-          directory: .cov
+          files: .cov/coverage.xml
 
   docs:
     name: Documentation
