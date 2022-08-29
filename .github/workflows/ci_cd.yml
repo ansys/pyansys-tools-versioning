@@ -108,7 +108,7 @@ jobs:
       - name: Upload Wheelhouse
         uses: actions/upload-artifact@v3
         with:
-          name: ${{ env.PACKAGE_NAME }}-v${{ steps.version.outputs.PYANSYS_TOOLS_VERSIONING_VERSION }}-wheelhouse-${{ runner.os }}-${{ matrix.python-version }}
+          name: ${{ env.PACKAGE_NAME }}-v${{ steps.version.outputs.PYANSYS_TOOLS_VERSIONING_VERSION }}-wheelhouse-${{ runner.os }}-${{ matrix.cfg.python-version }}
           path: '*.zip'
           retention-days: 7
 
