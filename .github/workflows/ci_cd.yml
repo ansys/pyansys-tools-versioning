@@ -112,6 +112,22 @@ jobs:
           path: '*.zip'
           retention-days: 7
 
+      - name: Upload Coverage Results
+        uses: actions/upload-artifact@v3
+        if: |
+          (${{ matrix.cfg.python-version }} == ${{ env.MAIN_PYTHON_VERSION }}) &&
+          (${{ runner.os }} ==  'Linux')
+        with:
+          name: HTML-Coverage
+          path: .cov/html
+          retention-days: 7
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        if: |
+          (${{ matrix.cfg.python-version }} == ${{ env.MAIN_PYTHON_VERSION }}) &&
+          (${{ runner.os }} ==  'Linux')
+
   docs:
     name: Documentation
     runs-on: ubuntu-latest
