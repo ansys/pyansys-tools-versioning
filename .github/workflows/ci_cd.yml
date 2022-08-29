@@ -115,8 +115,8 @@ jobs:
       - name: Upload Coverage Results
         uses: actions/upload-artifact@v3
         if: |
-          (${{ matrix.cfg.python-version }} == ${{ env.MAIN_PYTHON_VERSION }}) &&
-          (${{ runner.os }} ==  'Linux')
+          (matrix.cfg.python-version == env.MAIN_PYTHON_VERSION) &&
+          (runner.os == 'Linux')
         with:
           name: HTML-Coverage
           path: .cov/html
@@ -125,8 +125,11 @@ jobs:
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
         if: |
-          (${{ matrix.cfg.python-version }} == ${{ env.MAIN_PYTHON_VERSION }}) &&
-          (${{ runner.os }} ==  'Linux')
+          (matrix.cfg.python-version == env.MAIN_PYTHON_VERSION) &&
+          (runner.os ==  'Linux') &&
+          (github.ref == 'refs/heads/main')
+        with:
+          directory: .cov
 
   docs:
     name: Documentation
