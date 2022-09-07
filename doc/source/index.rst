@@ -9,4 +9,5 @@
    :hidden:
    :maxdepth: 3
 
+   getting_started
    autoapi/index
