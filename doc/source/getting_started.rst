@@ -9,7 +9,7 @@ manager installation or the manual installation. The process to be followed for
 each of them is shown in the upcoming sections.
 
 The ``pyansys-tools-versioning`` package currently supports Python >=3.7 on
-Windows, Mac OS, and Linux.
+Windows, macOS, and Linux.
 
 Install the latest release from PyPi with:
 
@@ -51,7 +51,7 @@ following:
    unzip pyansys-tools-versioning-v<major.minor.patch>-wheelhouse-Linux-3.7.zip wheelhouse
    python -m pip install pyansys-tools-versioning -f wheelhouse --no-index --upgrade --ignore-installed
 
-If you’re on Windows with Python 3.9, unzip to a wheelhouse directory and
+If you are on Windows with Python 3.9, unzip to a wheelhouse directory and
 install using the same command as before.
 
 Consider installing using a virtual environment. More information on general

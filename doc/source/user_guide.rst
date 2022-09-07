@@ -47,7 +47,7 @@ and a ``VERSION_MAP`` dictionary
 
 
 Suppose that two servers are created using previous class. Each of the servers
-is using a different version, meaning that some of the methods are be available
+is using a different version, meaning that some of the methods are available
 while some others are not:
 
 .. code-block:: pycon
