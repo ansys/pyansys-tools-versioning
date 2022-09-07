@@ -10,4 +10,5 @@
    :maxdepth: 3
 
    getting_started
+   user_guide
    autoapi/index
