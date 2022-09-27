@@ -149,14 +149,14 @@ jobs:
       - name: Generate the documentation with tox
         run: tox -e doc-html,doc-json
 
-      - name: Upload documentation
+      - name: Upload documentation (as HTML)
         uses: actions/upload-artifact@v3
         with:
           name: HTML-Documentation
           path: .tox/doc_out_html
           retention-days: 7
 
-      - name: Upload documentation
+      - name: Upload documentation (as JSON)
         uses: actions/upload-artifact@v3
         with:
           name: JSON-Documentation
