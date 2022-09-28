@@ -169,7 +169,7 @@ jobs:
         with:
           token: ${{ secrets.github_token }}
           branch: gh-pages
-          folder: .tox/doc_out
+          folder: .tox/doc_out_html
           clean: true
           single-commit: true
 
