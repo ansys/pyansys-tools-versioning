@@ -1,4 +1,4 @@
-ansys_sphinx_theme==0.6.0
+ansys_sphinx_theme==0.6.1
 numpydoc==1.4.0
 Sphinx==5.2.3
 sphinx-autoapi==2.0.0
