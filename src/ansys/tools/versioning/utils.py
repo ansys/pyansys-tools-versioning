@@ -204,7 +204,7 @@ def requires_version(version, VERSION_MAP=None):
     Parameters
     ----------
     version : str, tuple
-        A string or tuple represeting the minimum required version.
+        A string or tuple representing the minimum required version.
     VERSION_MAP : dict, optional
         A dictionary relating server version and ANSYS unified install version.
 

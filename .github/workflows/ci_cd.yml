@@ -31,7 +31,7 @@ jobs:
           python-version: ${{ env.MAIN_PYTHON_VERSION }}
 
   docs-style:
-    name: Documentation Style Check
+    name: PyAnsys documentation style check
     runs-on: ubuntu-latest
     steps:
       - name: PyAnsys documentation style checks
@@ -40,7 +40,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
   smoke-tests:
-    name: Build and Smoke tests
+    name: Build and smoke tests
     runs-on: ${{ matrix.os }}
     needs: [style]
     strategy:
@@ -59,7 +59,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
 
   smoke-tests-macos:
-    name: Build and Smoke tests (macOS)
+    name: Build and smoke tests (macOS)
     if: github.event_name == 'push' && contains(github.ref, 'refs/tags')
     runs-on: macos-latest
     needs: [style]
@@ -78,7 +78,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
 
   tests:
-    name: "Test library"
+    name: Testing
     runs-on: ${{ matrix.os }}
     needs: [smoke-tests]
     strategy:
@@ -89,23 +89,19 @@ jobs:
       - name: Run pytest
         uses: pyansys/actions/tests-pytest@v1
         with:
-          pytest-extra-args: "--cov=ansys.<library> --cov-report=term --cov-report=xml:.cov/coverage.xml --cov-report=html:.cov/html"
+          pytest-extra-args: "--cov=${{ env.PACKAGE_NAMESPACE }} --cov-report=term --cov-report=xml:.cov/coverage.xml --cov-report=html:.cov/html"
 
       - name: Upload coverage results (HTML)
         uses: actions/upload-artifact@v3
-        if: |
-          (matrix.python-version == env.MAIN_PYTHON_VERSION) &&
-          (runner.os == 'Linux')
+        if: (matrix.python-version == env.MAIN_PYTHON_VERSION) && (runner.os == 'Linux')
         with:
-          name: HTML-Coverage
+          name: coverage-html
           path: .cov/html
           retention-days: 7
 
       - name: Upload coverage results (Codecov)
         uses: codecov/codecov-action@v3
-        if: |
-          (matrix.python-version == env.MAIN_PYTHON_VERSION) &&
-          (runner.os ==  'Linux')
+        if: (matrix.python-version == env.MAIN_PYTHON_VERSION) && (runner.os == 'Linux')
         with:
           files: .cov/coverage.xml
 
