@@ -115,6 +115,7 @@ jobs:
         uses: pyansys/actions/doc-build@v1
         with:
           python-version: ${{ env.MAIN_PYTHON_VERSION }}
+          dependencies: "build-essential zip pandoc texlive-latex-extra latexmk texlive-pstricks"
 
   package:
     name: Package library
