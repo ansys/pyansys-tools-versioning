@@ -22,7 +22,7 @@ help:
 pdf:
 	@$(SPHINXBUILD) -M latex "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 	cd $(BUILDDIR)/latex && latexmk -r latexmkrc -pdf *.tex -interaction=nonstopmode || true
-	(test -f $(BUILDDIR)/latex/ansys_tools*.pdf && echo pdf exists) || exit 1
+	(test -f $(BUILDDIR)/latex/pyansys-tools*.pdf && echo pdf exists) || exit 1
 
 # Customized clean due to examples gallery
 clean:
