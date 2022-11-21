@@ -89,6 +89,7 @@ jobs:
       - name: Run pytest
         uses: pyansys/actions/tests-pytest@v1
         with:
+          python-version: ${{ matrix.python-version }}
           pytest-extra-args: "--cov=${{ env.PACKAGE_NAMESPACE }} --cov-report=term --cov-report=xml:.cov/coverage.xml --cov-report=html:.cov/html"
 
       - name: Upload coverage results (HTML)
