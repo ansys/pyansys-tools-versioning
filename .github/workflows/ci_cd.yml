@@ -60,7 +60,7 @@ jobs:
 
   smoke-tests-macos:
     name: Build and smoke tests (macOS)
-    if: github.event_name == 'push' && contains(github.ref, 'refs/tags')
+    if: ${{ github.event_name == 'push' && contains(github.ref, 'refs/tags') }}
     runs-on: macos-latest
     needs: [style]
     strategy:
