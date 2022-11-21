@@ -2,8 +2,11 @@
 from datetime import datetime
 
 from ansys_sphinx_theme import pyansys_logo_black
+from sphinx.builders.latex import LaTeXBuilder
 
 from ansys.tools.versioning import __version__
+
+LaTeXBuilder.supported_image_types = ["image/png", "image/pdf", "image/svg+xml"]
 
 # Project information
 project = "pyansys-tools-versioning"
