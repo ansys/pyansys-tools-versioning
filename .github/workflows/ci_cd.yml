@@ -10,6 +10,8 @@ on:
 env:
   MAIN_PYTHON_VERSION: '3.10'
   PACKAGE_NAME: 'pyansys-tools-versioning'
+  PACKAGE_NAMESPACE: 'ansys.tools.versioning'
+  DOCUMENTATION_CNAME: 'versioning.tools.docs.pyansys.com'
 
 
 concurrency:
@@ -23,110 +25,84 @@ jobs:
     name: Code style
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
+      - name: PyAnsys code style checks
+        uses: pyansys/actions/code-style@v1
         with:
           python-version: ${{ env.MAIN_PYTHON_VERSION }}
 
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip flit tox
-
-      - name: Test with tox
-        run: tox -e style
-
   docs-style:
-    name: Documentation Style Check
+    name: PyAnsys documentation style check
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-  
-      - name: Running Vale
-        uses: errata-ai/vale-action@reviewdog
-        env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      - name: PyAnsys documentation style checks
+        uses: pyansys/actions/doc-style@v1
         with:
-          files: doc
-          reporter: github-pr-check
-          level: error
-          filter_mode: nofilter
-          fail_on_error: true
-          vale_flags: "--config=doc/.vale.ini"
+          token: ${{ secrets.GITHUB_TOKEN }}
 
-  tests:
-    name: Tests
-    needs: [style]
+  smoke-tests:
+    name: Build and smoke tests
     runs-on: ${{ matrix.os }}
+    needs: [style]
     strategy:
-      matrix:
-        os: [windows-latest, ubuntu-latest, macos-latest]
-        cfg:
-          - {python-version: "3.7", toxenv: "py37", toxargs: "cov"}
-          - {python-version: "3.8", toxenv: "py38", toxargs: "cov"}
-          - {python-version: "3.9", toxenv: "py39", toxargs: "cov"}
-          - {python-version: "3.10", toxenv: "py310", toxargs: "doctests-cov"}
       fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python-version: ['3.7', '3.8', '3.9', '3.10']
 
     steps:
-      - name: Clone repository
-        uses: actions/checkout@v3
-
-      - name: Set up Python ${{ matrix.cfg.python-version }}
-        uses: actions/setup-python@v4
+      - name: Build wheelhouse and perform smoke test
+        uses: pyansys/actions/build-wheelhouse@v1
         with:
-          python-version: ${{ matrix.cfg.python-version }}
+          library-name: ${{ env.PACKAGE_NAME }}
+          library-namespace: ${{ env.PACKAGE_NAMESPACE }}
+          operating-system: ${{ matrix.os }}
+          python-version: ${{ matrix.python-version }}
 
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip tox
+  smoke-tests-macos:
+    name: Build and smoke tests (macOS)
+    if: ${{ github.event_name == 'push' && contains(github.ref, 'refs/tags') }}
+    runs-on: macos-latest
+    needs: [style]
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.7', '3.8', '3.9', '3.10']
 
-      - name: Test with tox
-        run: tox -e ${{ matrix.cfg.toxenv }}-${{ matrix.cfg.toxargs }}
-
-      - name: Install package
-        run: |
-          pip install -r requirements/requirements_build.txt
-          pip install .
-
-      - name: Store version
-        run: |
-          echo "::set-output name=PYANSYS_TOOLS_VERSIONING_VERSION::$(python -c "from ansys.tools.versioning import __version__; print(__version__)")"
-        id: version
-
-      - name: Generate wheelhouse
-        run: |
-          pip wheel . -w wheelhouse
-
-      - name: Zip wheelhouse
-        uses: vimtor/action-zip@v1
+    steps:
+      - name: Build wheelhouse and perform smoke test
+        uses: pyansys/actions/build-wheelhouse@v1
         with:
-          files: wheelhouse
-          dest: ${{ env.PACKAGE_NAME }}-v${{ steps.version.outputs.PYANSYS_TOOLS_VERSIONING_VERSION }}-wheelhouse-${{ runner.os }}-${{ matrix.cfg.python-version }}.zip
+          library-name: ${{ env.PACKAGE_NAME }}
+          library-namespace: ${{ env.PACKAGE_NAMESPACE }}
+          operating-system: ${{ runner.os }}
+          python-version: ${{ matrix.python-version }}
 
-      - name: Upload Wheelhouse
+  tests:
+    name: Testing
+    runs-on: ${{ matrix.os }}
+    needs: [smoke-tests]
+    strategy:
+      matrix:
+          os: [ubuntu-latest, windows-latest]
+          python-version: ['3.7', '3.8', '3.9', '3.10']
+    steps:
+      - name: Run pytest
+        uses: pyansys/actions/tests-pytest@v1
+        with:
+          python-version: ${{ matrix.python-version }}
+          pytest-extra-args: "--cov=${{ env.PACKAGE_NAMESPACE }} --cov-report=term --cov-report=xml:.cov/coverage.xml --cov-report=html:.cov/html"
+
+      - name: Upload coverage results (HTML)
         uses: actions/upload-artifact@v3
+        if: (matrix.python-version == env.MAIN_PYTHON_VERSION) && (runner.os == 'Linux')
         with:
-          name: ${{ env.PACKAGE_NAME }}-v${{ steps.version.outputs.PYANSYS_TOOLS_VERSIONING_VERSION }}-wheelhouse-${{ runner.os }}-${{ matrix.cfg.python-version }}
-          path: '*.zip'
-          retention-days: 7
-
-      - name: Upload Coverage Results
-        uses: actions/upload-artifact@v3
-        if: |
-          (matrix.cfg.python-version == env.MAIN_PYTHON_VERSION) &&
-          (runner.os == 'Linux')
-        with:
-          name: HTML-Coverage
+          name: coverage-html
           path: .cov/html
           retention-days: 7
 
-      - name: Upload coverage to Codecov
+      - name: Upload coverage results (Codecov)
         uses: codecov/codecov-action@v3
-        if: |
-          (matrix.cfg.python-version == env.MAIN_PYTHON_VERSION) &&
-          (runner.os ==  'Linux')
+        if: (matrix.python-version == env.MAIN_PYTHON_VERSION) && (runner.os == 'Linux')
         with:
           files: .cov/coverage.xml
 
@@ -135,99 +111,62 @@ jobs:
     runs-on: ubuntu-latest
     needs: [docs-style]
     steps:
-      - uses: actions/checkout@v3
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
+      - name: "Run Ansys documentation building action"
+        uses: pyansys/actions/doc-build@v1
         with:
           python-version: ${{ env.MAIN_PYTHON_VERSION }}
+          dependencies: "build-essential zip pandoc texlive-latex-extra latexmk texlive-pstricks"
 
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip flit tox
-
-      - name: Generate the documentation with tox
-        run: tox -e doc-html,doc-json
-
-      - name: Upload documentation (as HTML)
-        uses: actions/upload-artifact@v3
-        with:
-          name: HTML-Documentation
-          path: .tox/doc_out_html
-          retention-days: 7
-
-      - name: Upload documentation (as JSON)
-        uses: actions/upload-artifact@v3
-        with:
-          name: JSON-Documentation
-          path: .tox/doc_out_json
-          retention-days: 7
-
-      - name: Deploy documentation to gh-pages
-        if: github.ref == 'refs/heads/main'
-        uses: JamesIves/github-pages-deploy-action@v4.4.1
-        with:
-          token: ${{ secrets.github_token }}
-          branch: gh-pages
-          folder: .tox/doc_out_html
-          clean: true
-          single-commit: true
-
-  build:
-    name: Build library
+  package:
+    name: Package library
     needs: [tests, docs]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
+      - name: Build library source and wheel artifacts
+        uses: pyansys/actions/build-library@v1
         with:
+          library-name: ${{ env.PACKAGE_NAME }}
           python-version: ${{ env.MAIN_PYTHON_VERSION }}
-
-      - name: Install dependencies and build the library
-        run: |
-          python -m pip install --upgrade pip flit
-          python -m pip install -r requirements/requirements_build.txt
-          flit build
-          python -m twine check dist/*
-
-      - name: Upload wheel and binaries
-        uses: actions/upload-artifact@v3
-        with:
-          name: ${{ env.PACKAGE_NAME }}-packages
-          path: dist/
-          retention-days: 7
 
   release:
     name: Release project
-    if: github.event_name == 'push' && contains(github.ref, 'refs/tags')
-    needs: [build]
+    if: ${{ github.event_name == 'push' && contains(github.ref, 'refs/tags') }}
+    needs: [package, smoke-tests-macos]
     runs-on: ubuntu-latest
     steps:
-      - name: Set up Python
-        uses: actions/setup-python@v4
+      - name: Release to the public PyPI repository
+        uses: pyansys/actions/release-pypi-public@v1
         with:
+          library-name: ${{ env.PACKAGE_NAME }}
+          twine-username: "__token__"
+          twine-token: ${{ secrets.PYPI_TOKEN }}
+
+      - name: Release to GitHub
+        uses: pyansys/actions/release-github@v1
+        with:
+          library-name: ${{ env.PACKAGE_NAME }}
+
+  upload_docs_dev:
+    name: Upload dev documentation
+    if: ${{ github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+    needs: [package]
+    steps:
+      - name: Deploy the latest documentation
+        uses: pyansys/actions/doc-deploy-dev@v1
+        with:
+          cname: ${{ env.DOCUMENTATION_CNAME }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+  upload_docs_release:
+    name: Upload release documentation
+    if: ${{ github.event_name == 'push' && contains(github.ref, 'refs/tags') }}
+    runs-on: ubuntu-latest
+    needs: [release]
+    steps:
+      - name: Deploy the stable documentation
+        uses: pyansys/actions/doc-deploy-stable@v1
+        with:
+          cname: ${{ env.DOCUMENTATION_CNAME }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           python-version: ${{ env.MAIN_PYTHON_VERSION }}
-
-      - uses: actions/download-artifact@v3
-
-      - name: Display structure of downloaded files
-        run: ls -R
-
-      - name: Upload to Public PyPi
-        run: |
-          pip install twine
-          twine upload --skip-existing ./**/*.whl
-          twine upload --skip-existing ./**/*.tar.gz
-        env:
-          TWINE_USERNAME: __token__
-          TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
-
-      - name: Release
-        uses: softprops/action-gh-release@v1
-        with:
-          files: |
-            ./**/*.whl
-            ./**/*.tar.gz
-            ./**/*.zip

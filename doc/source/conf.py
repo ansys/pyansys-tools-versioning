@@ -1,15 +1,29 @@
 """Sphinx documentation configuration file."""
 from datetime import datetime
+import os
 
 from ansys_sphinx_theme import pyansys_logo_black
+from sphinx.builders.latex import LaTeXBuilder
 
 from ansys.tools.versioning import __version__
+
+LaTeXBuilder.supported_image_types = ["image/png", "image/pdf", "image/svg+xml"]
+
+
+def get_version_match(semver):
+    """Evaluate the version match for the multi-documentation."""
+    if semver.endswith("dev0"):
+        return "dev"
+    major, minor, _ = semver.split(".")
+    return ".".join([major, minor])
+
 
 # Project information
 project = "pyansys-tools-versioning"
 copyright = f"(c) {datetime.now().year} ANSYS, Inc. All rights reserved"
 author = "ANSYS, Inc."
 release = version = __version__
+cname = os.getenv("DOCUMENTATION_CNAME", default="nocname.com")
 
 # use the default pyansys logo
 html_logo = pyansys_logo_black
@@ -19,6 +33,10 @@ html_short_title = html_title = project
 
 # specify the location of your github repo
 html_theme_options = {
+    "switcher": {
+        "json_url": f"https://{cname}/release/versions.json",
+        "version_match": get_version_match(__version__),
+    },
     "github_url": "https://github.com/pyansys/pyansys-tools-versioning",
     "show_prev_next": False,
     "show_breadcrumbs": True,
