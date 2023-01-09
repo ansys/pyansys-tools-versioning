@@ -283,7 +283,7 @@ def requires_version(version, VERSION_MAP=None):
     return decorator
 
 
-class Version:
+class Version(int):
     """Class for version comparison.
 
     This class can be instantiated from a string or an integer.
@@ -312,10 +312,10 @@ class Version:
             str, int: Returns a subclass of str or int depending on value.
         """
         if isinstance(value, str):
-            try:
-                return super().__new__(cls, int(value))
-            except ValueError:
-                return str().__new__(str, value)
+            if value.strip().isdigit():
+                return super().__new__(cls, int(value.strip()))
+            else:
+                return str.__new__(str, value)
         elif isinstance(value, int):
             return super().__new__(cls, value)
 
