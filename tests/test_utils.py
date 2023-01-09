@@ -9,6 +9,7 @@ from ansys.tools.versioning.utils import (
     server_meets_version,
     version_string_as_tuple,
     version_tuple_as_string,
+    Version
 )
 
 st_version_integers = st.lists(st.integers(0, 100), min_size=1, max_size=3)
@@ -64,3 +65,55 @@ def test_version_string_as_tuple_syntax_error(version_numbers):
 
 def test_equal_version_is_valid():
     assert server_meets_version("0.0.0", "0.0.0") == True
+
+def test_dev_version_patch():
+    my_version = "0.0.0dev1"
+    assert server_meets_version(my_version, "0.0.0") == True
+    assert server_meets_version(my_version, "0.0.1") == True
+    assert server_meets_version(my_version, "0.0.999") == True
+
+    assert server_meets_version(my_version, "0.2.0") == False
+    assert server_meets_version(my_version, "0.2.9999") == False
+
+    assert server_meets_version(my_version, "3.1.0") == False
+    assert server_meets_version(my_version, "3.1.9999") == False
+
+
+def test_dev_version_minor():
+    my_version = "0.dev.1"
+    assert server_meets_version(my_version, "0.0.0") == True
+    assert server_meets_version(my_version, "0.0.1") == True
+    assert server_meets_version(my_version, "0.0.999") == True
+
+    assert server_meets_version(my_version, "0.2.0") == True
+    assert server_meets_version(my_version, "0.2.9999") == True
+
+    assert server_meets_version(my_version, "3.1.0") == False
+    assert server_meets_version(my_version, "3.1.9999") == False
+
+def test_dev_version_major():
+    my_version = "dev.1.1"
+    assert server_meets_version(my_version, "0.0.0") == True
+    assert server_meets_version(my_version, "0.0.1") == True
+    assert server_meets_version(my_version, "0.0.999") == True
+
+    assert server_meets_version(my_version, "0.2.0") == True
+    assert server_meets_version(my_version, "0.2.9999") == True
+
+    assert server_meets_version(my_version, "3.1.0") == True
+    assert server_meets_version(my_version, "3.1.9999") == True
+
+
+def test_version():
+    assert Version(1) < Version("dev")
+    assert Version(999999) < Version("dev")
+    assert Version("dev") > Version("999999")
+    assert Version("dev") > Version("-1")
+
+    assert Version(1) <= Version("dev")
+    assert Version(999999) <= Version("dev")
+    assert Version("dev") >= Version("999999")
+    assert Version("dev") >= Version("-1")
+
+    assert Version(1) != Version("dev")
+    assert not (Version(1) == Version("dev"))

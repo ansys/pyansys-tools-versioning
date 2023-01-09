@@ -85,10 +85,10 @@ def version_string_as_tuple(version_string):
     """
     try:
         # Check version string numbers are numeric by converting to integers
-        version_tuple = tuple(map(int, version_string.split(".")))
+        version_tuple = tuple(map(Version, version_string.split(".")))
 
         # Check version numbers are positive integers
-        if not all(num >= 0 for num in version_tuple):
+        if not all(num >= Version(0) for num in version_tuple):
             raise ValueError
 
     except ValueError:
@@ -122,12 +122,16 @@ def version_tuple_as_string(version_tuple):
     """
     try:
         # Check version numbers are positive integers
-        if not all(isinstance(num, int) and num >= 0 for num in version_tuple):
+        if not all(
+            (isinstance(num, int) and num >= 0) or
+            (isinstance(num, str) and "dev" in num and len(num) <= 6)
+            for num in version_tuple):
             raise ValueError
 
     except ValueError:
         raise VersionSyntaxError(
-            "Version string can only contain positive integers following <MAJOR>.<MINOR>.<PATCH> versioning."
+            "Version string can only contain positive integers following <MAJOR>.<MINOR>.<PATCH> versioning "
+            "or a string containing 'dev' and a number of characters less than 6."
         )
 
     version_string = ".".join(tuple(map(str, version_tuple)))
@@ -253,3 +257,66 @@ def requires_version(version, VERSION_MAP=None):
         return wrapper
 
     return decorator
+
+class Version(int):
+    def __new__(cls, value):
+        if isinstance(value, str):
+            try:
+                return super().__new__(cls, int(value))
+            except ValueError:
+                if "dev" in value:
+                    return str().__new__(str, value)
+                else:
+                    raise ValueError("Invalid version string")
+        elif isinstance(value, int):
+            return super().__new__(cls, value)
+
+    def __le__(self, __x: int) -> bool:
+        if isinstance(__x, str):
+            if "dev" in __x:
+                return True
+            else:
+                raise ValueError("Invalid version string")
+        else:
+            return super().__le__(__x)
+
+    def __lt__(self, __x: int) -> bool:
+        if isinstance(__x, str):
+            if "dev" in __x:
+                return True
+            else:
+                raise ValueError("Invalid version string")
+        else:
+            return super().__lt__(__x)
+
+    def __ge__(self, __x: int) -> bool:
+        if isinstance(__x, str):
+            if "dev" in __x:
+                return False
+            else:
+                raise ValueError("Invalid version string")
+        else:
+            return super().__ge__(__x)
+
+    def __gt__(self, __x: int) -> bool:
+        if isinstance(__x, str):
+            if "dev" in __x:
+                return False
+            else:
+                raise ValueError("Invalid version string")
+        else:
+            return super().__gt__(__x)
+
+    def __eq__(self, __x: object) -> bool:
+        if isinstance(__x, str):
+            return False
+        else:
+            return super().__eq__(__x)
+
+    def __ne__(self, __x: object) -> bool:
+        if isinstance(__x, str):
+            return not self.__eq__(__x)
+        else:
+            return super().__ne__(__x)
+
+    
