@@ -141,7 +141,7 @@ def server_meets_version(server_version, required_version):
     ----------
     server_version : str, tuple, obj
         A string or tuple representing the server version.
-        If it is an object, it must have a '_server_version' attribute.
+        If it is an object different from the previous ones, it must have a '_server_version' attribute.
 
     required_version : str, tuple
         A string or tuple representing the version to be meet.
@@ -173,11 +173,12 @@ def server_meets_version(server_version, required_version):
     >>> server_version, required_version = (0, 0, 0), (0, 0, 0)
     >>> server_meets_version(server_version, required_version)
     True
-    >>> my_obj = class MyServer:
-        def __init__(self):
-            self._server_version = "1.2.0"
-    >>> server_version, required_version = my_obj, "1.3.0"
-    >>> server_meets_version(server_version, required_version)
+    >>> class MyServer:
+            def __init__(self):
+                self._server_version = "1.2.0"
+    >>> server = MyServer()
+    >>> server_version, required_version = server, "1.3.0"
+    >>> server_meets_version(server, required_version)
 
     """
     # If the 'server_version' object is not a string, let's check for
