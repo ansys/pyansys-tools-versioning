@@ -287,10 +287,7 @@ class Version(int):
             try:
                 return super().__new__(cls, int(value))
             except ValueError:
-                if "dev" in value:
-                    return str().__new__(str, value)
-                else:
-                    raise ValueError("Invalid version string")
+                return str().__new__(str, value)
         elif isinstance(value, int):
             return super().__new__(cls, value)
 
@@ -342,4 +339,6 @@ class Version(int):
         else:
             return super().__ne__(__x)
 
+    def __hash__(self) -> int:
+        return super().__hash__()
     

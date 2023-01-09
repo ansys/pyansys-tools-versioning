@@ -36,7 +36,7 @@ def test_version_tuple_as_strig_syntax_error(version_numbers):
     with pytest.raises(VersionSyntaxError) as excinfo:
         version_tuple_as_string(expected_version_tuple)
     assert (
-        "Version string can only contain positive integers following <MAJOR>.<MINOR>.<PATCH> versioning."
+        "Version string can only contain positive integers following <MAJOR>.<MINOR>.<PATCH> versioning"
         in excinfo.exconly()
     )
 
@@ -140,7 +140,6 @@ def test_dev_version_major():
 
     assert server_meets_version(my_version, "3.1.0") == True
     assert server_meets_version(my_version, "3.1.9999") == True
-
 
 def test_version():
     assert Version(1) < Version("dev")
