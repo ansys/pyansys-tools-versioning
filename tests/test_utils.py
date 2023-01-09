@@ -70,6 +70,7 @@ class MyServer:
     def __init__(self, version):
         self._server_version = version
 
+
 @pytest.mark.parametrize(
     "server_version,required_version,result",
     [
@@ -98,6 +99,6 @@ def test_server_meets_version(server_version, required_version, result):
 def test_server_meets_version_error():
     class MyObj:
         pass
-    
+
     with pytest.raises(ValueError):
         server_meets_version(MyObj(), "1.2.1")
