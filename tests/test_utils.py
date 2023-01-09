@@ -64,3 +64,41 @@ def test_version_string_as_tuple_syntax_error(version_numbers):
 
 def test_equal_version_is_valid():
     assert server_meets_version("0.0.0", "0.0.0") == True
+
+
+class MyServer:
+    def __init__(self, version):
+        self._server_version = version
+
+
+@pytest.mark.parametrize(
+    "server_version,required_version,result",
+    [
+        pytest.param(MyServer(version="1.4.0"), "1.2.0", True, id="Normal successful class case."),
+        pytest.param(
+            MyServer(version=(1, 4, 0)),
+            "1.2.0",
+            True,
+            id="Normal successful class case with tuple.",
+        ),
+        pytest.param(
+            MyServer(version=(1, 4, 0)), "1.6.0", False, id="Normal unsuccessful class case."
+        ),
+        pytest.param((1, 2, 0), "1.2.0", True, id="Normal successful case."),
+        pytest.param((1, 2, 1), "1.2.0", True, id="Normal successful case with minor."),
+        pytest.param((1, 2, 0), "1.2.1", False, id="Unsuccessful case tuple-str."),
+        pytest.param("1.2.2", "1.2.1", True, id="Successful case str-str."),
+        pytest.param("1.2.0", "1.2.1", False, id="Unsuccessful case str-str."),
+        pytest.param("1. 2. 3", "1.2.1", True, id="Successful case str with spaces-str."),
+    ],
+)
+def test_server_meets_version(server_version, required_version, result):
+    assert server_meets_version(server_version, required_version) == result
+
+
+def test_server_meets_version_error():
+    class MyObj:
+        pass
+
+    with pytest.raises(ValueError):
+        server_meets_version(MyObj(), "1.2.1")
