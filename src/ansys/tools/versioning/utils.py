@@ -123,9 +123,10 @@ def version_tuple_as_string(version_tuple):
     try:
         # Check version numbers are positive integers
         if not all(
-            (isinstance(num, int) and num >= 0) or
-            (isinstance(num, str) and "dev" in num and len(num) <= 6)
-            for num in version_tuple):
+            (isinstance(num, int) and num >= 0)
+            or (isinstance(num, str) and "dev" in num and len(num) <= 6)
+            for num in version_tuple
+        ):
             raise ValueError
 
     except ValueError:
@@ -280,6 +281,7 @@ def requires_version(version, VERSION_MAP=None):
         return wrapper
 
     return decorator
+
 
 class Version(int):
     def __new__(cls, value):

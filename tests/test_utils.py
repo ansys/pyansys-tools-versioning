@@ -4,12 +4,12 @@ import pytest
 
 from ansys.tools.versioning.exceptions import VersionSyntaxError
 from ansys.tools.versioning.utils import (
+    Version,
     sanitize_version_string,
     sanitize_version_tuple,
     server_meets_version,
     version_string_as_tuple,
     version_tuple_as_string,
-    Version
 )
 
 st_version_integers = st.lists(st.integers(0, 100), min_size=1, max_size=3)
@@ -104,6 +104,7 @@ def test_server_meets_version_error():
     with pytest.raises(ValueError):
         server_meets_version(MyObj(), "1.2.1")
 
+
 def test_dev_version_patch():
     my_version = "0.0.0dev1"
     assert server_meets_version(my_version, "0.0.0") == True
@@ -128,6 +129,7 @@ def test_dev_version_minor():
 
     assert server_meets_version(my_version, "3.1.0") == False
     assert server_meets_version(my_version, "3.1.9999") == False
+
 
 def test_dev_version_major():
     my_version = "dev.1.1"
