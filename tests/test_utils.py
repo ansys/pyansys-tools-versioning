@@ -143,6 +143,7 @@ def test_dev_version_major():
     assert server_meets_version(my_version, "3.1.0") == True
     assert server_meets_version(my_version, "3.1.9999") == True
 
+
 def test_version():
     assert Version(1) < Version("dev")
     assert Version(999999) < Version("dev")

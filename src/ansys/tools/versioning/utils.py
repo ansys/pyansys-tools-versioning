@@ -343,4 +343,3 @@ class Version(int):
 
     def __hash__(self) -> int:
         return super().__hash__()
-    
