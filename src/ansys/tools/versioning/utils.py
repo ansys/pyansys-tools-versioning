@@ -283,8 +283,34 @@ def requires_version(version, VERSION_MAP=None):
     return decorator
 
 
-class Version(int):
+class Version:
+    """Class for version comparison.
+
+    This class can be instantiated from a string or an integer.
+    The constructor will choose the corresponding class.
+
+    Examples
+    --------
+    >>> from ansys.tools.versioning.utils import Version
+    >>> Version(1)
+    1
+    >>> Version("dev")
+    'dev'
+    >>> Version(1) <= Version("dev")
+    True
+    >>> Version(99999) >= Version("dev")
+    False
+    """
+
     def __new__(cls, value):
+        """Create and return a new object.
+
+        Args:
+            value (str or int):
+
+        Returns:
+            str, int: Returns a subclass of str or int depending on value.
+        """
         if isinstance(value, str):
             try:
                 return super().__new__(cls, int(value))
@@ -294,6 +320,11 @@ class Version(int):
             return super().__new__(cls, value)
 
     def __le__(self, __x: int) -> bool:
+        """Less equal.
+
+        If compared against a string which contains 'dev' it will always evaluate to True.
+        If compared against an int, it will perform a classic 'less equal' operation.
+        """
         if isinstance(__x, str):
             if "dev" in __x:
                 return True
@@ -303,6 +334,11 @@ class Version(int):
             return super().__le__(__x)
 
     def __lt__(self, __x: int) -> bool:
+        """Less than.
+
+        If compared against a string which contains 'dev' it will always evaluate to True.
+        If compared against an int, it will perform a classic 'less than' operation.
+        """
         if isinstance(__x, str):
             if "dev" in __x:
                 return True
@@ -312,6 +348,11 @@ class Version(int):
             return super().__lt__(__x)
 
     def __ge__(self, __x: int) -> bool:
+        """Greater equal.
+
+        If compared against a string which contains 'dev' it will always evaluate to False.
+        If compared against an int, it will perform a classic 'greater equal' operation.
+        """
         if isinstance(__x, str):
             if "dev" in __x:
                 return False
@@ -321,6 +362,11 @@ class Version(int):
             return super().__ge__(__x)
 
     def __gt__(self, __x: int) -> bool:
+        """Greater than.
+
+        If compared against a string which contains 'dev' it will always evaluate to False.
+        If compared against an int, it will perform a classic 'greater than' operation.
+        """
         if isinstance(__x, str):
             if "dev" in __x:
                 return False
@@ -330,17 +376,27 @@ class Version(int):
             return super().__gt__(__x)
 
     def __eq__(self, __x: object) -> bool:
+        """Equal method.
+
+        If compared against a string which contains 'dev' it will always evaluate to False.
+        If compared against an int, it will perform a classic 'equal' operation.
+        """
         if isinstance(__x, str):
             return False
         else:
             return super().__eq__(__x)
 
     def __ne__(self, __x: object) -> bool:
+        """Not equal.
+
+        If compared against a string which contains 'dev' it will always evaluate to not
+        'equal' operation (True). If compared against an int, it will perform a classic 'not equal' operation.
+        """
         if isinstance(__x, str):
             return not self.__eq__(__x)
         else:
             return super().__ne__(__x)
 
     def __hash__(self) -> int:
+        """Call the underlying __hash__ method."""
         return super().__hash__()
-    
