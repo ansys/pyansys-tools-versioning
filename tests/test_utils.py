@@ -4,8 +4,8 @@ import pytest
 
 from ansys.tools.versioning.exceptions import VersionSyntaxError
 from ansys.tools.versioning.utils import (
-    VersionNumber,
     SemanticVersion,
+    VersionNumber,
     sanitize_version_string,
     sanitize_version_tuple,
     server_meets_version,
@@ -163,87 +163,91 @@ def test_version():
     with pytest.raises(ValueError):
         assert VersionNumber("deva")
 
+
 def test_semantic_version_definition():
     assert SemanticVersion((1, 2, 3))
     assert SemanticVersion(("1", "2", "dev"))
     assert SemanticVersion((1, "2", "dev"))
-    
+
     assert SemanticVersion(major=1, minor=2, patch=3)
     assert SemanticVersion(major="1", minor="2", patch="3")
     assert SemanticVersion(major=1, minor="2", patch="dev")
     assert SemanticVersion(major=1, minor="2", patch="dev01")
-    
+
     assert SemanticVersion("1.1.dev")
     assert SemanticVersion("1.1.dev1")
-    
-    with pytest.raises(ValueError):
-        SemanticVersion((1, 2))
-        
-    with pytest.raises(ValueError):
-        SemanticVersion(major=1,  minor=2)
-                
-    with pytest.raises(ValueError):
-        SemanticVersion(major=1,  minor=2, patch="dev.a")
 
     with pytest.raises(ValueError):
-        SemanticVersion(major=1,  minor="dev", patch="dev1")
+        SemanticVersion((1, 2))
+
+    with pytest.raises(ValueError):
+        SemanticVersion(major=1, minor=2)
+
+    with pytest.raises(ValueError):
+        SemanticVersion(major=1, minor=2, patch="dev.a")
+
+    with pytest.raises(ValueError):
+        SemanticVersion(major=1, minor="dev", patch="dev1")
 
     with pytest.raises(ValueError):
         SemanticVersion("1.1.deva")
-    
+
     with pytest.raises(ValueError):
         SemanticVersion("1.1")
+
 
 def test_semantic_version_methods():
     ver = SemanticVersion("1.1.dev1")
     assert ver.major == 1
     assert ver.minor == 1
     assert ver.patch == "dev1"
-    
+
     assert ver.as_string() == "1.1.dev1"
     assert ver.as_tuple() == (1, 1, "dev1")
     assert ver.as_dict() == {"major": 1, "minor": 1, "patch": "dev1"}
     assert ver.as_list() == [1, 1, "dev1"]
 
+
 def test_semantic_version_comparison():
-    assert SemanticVersion("1.1.1") < SemanticVersion((1,1,2))
-    assert SemanticVersion("1.1.1") > SemanticVersion((1,1,0))
-    
-    assert SemanticVersion("1.1.1") <= SemanticVersion((1,1,2))
-    assert SemanticVersion("1.1.1") >= SemanticVersion((1,1,0))
-    
-    assert SemanticVersion("1.1.1") <= SemanticVersion((1,1,1))
-    assert SemanticVersion("1.1.1") >= SemanticVersion((1,1,1))
-    
-    assert SemanticVersion("1.1.2") == SemanticVersion((1,1,2))
-    assert SemanticVersion("1.1.2") != SemanticVersion((1,1,3))
-    
+    assert SemanticVersion("1.1.1") < SemanticVersion((1, 1, 2))
+    assert SemanticVersion("1.1.1") > SemanticVersion((1, 1, 0))
+
+    assert SemanticVersion("1.1.1") <= SemanticVersion((1, 1, 2))
+    assert SemanticVersion("1.1.1") >= SemanticVersion((1, 1, 0))
+
+    assert SemanticVersion("1.1.1") <= SemanticVersion((1, 1, 1))
+    assert SemanticVersion("1.1.1") >= SemanticVersion((1, 1, 1))
+
+    assert SemanticVersion("1.1.2") == SemanticVersion((1, 1, 2))
+    assert SemanticVersion("1.1.2") != SemanticVersion((1, 1, 3))
+
     # checking major minors
-    assert SemanticVersion("1.1.1") < SemanticVersion((1,2,1))
-    assert SemanticVersion("1.1.1") > SemanticVersion((1,0,1))
-    
-    assert SemanticVersion("1.1.1") < SemanticVersion((2,1,1))
-    assert SemanticVersion("1.1.1") > SemanticVersion((0,1,1))
-    
+    assert SemanticVersion("1.1.1") < SemanticVersion((1, 2, 1))
+    assert SemanticVersion("1.1.1") > SemanticVersion((1, 0, 1))
+
+    assert SemanticVersion("1.1.1") < SemanticVersion((2, 1, 1))
+    assert SemanticVersion("1.1.1") > SemanticVersion((0, 1, 1))
+
+
 def test_semantic_version_comparison_dev():
-    assert SemanticVersion("1.1.1") < SemanticVersion((1,1,"dev"))
-    assert SemanticVersion("1.1.1") < SemanticVersion((1,1,"dev1"))
-    
-    assert SemanticVersion("1.1.dev1") == SemanticVersion((1,1,"dev1"))
-    assert SemanticVersion("1.1.dev1") != SemanticVersion((1,1,"dev0"))
-    
+    assert SemanticVersion("1.1.1") < SemanticVersion((1, 1, "dev"))
+    assert SemanticVersion("1.1.1") < SemanticVersion((1, 1, "dev1"))
+
+    assert SemanticVersion("1.1.dev1") == SemanticVersion((1, 1, "dev1"))
+    assert SemanticVersion("1.1.dev1") != SemanticVersion((1, 1, "dev0"))
+
     # checking major minors
-    assert SemanticVersion("1.1.1") < SemanticVersion((1,2,"dev"))
-    assert SemanticVersion("1.1.1") > SemanticVersion((1,0,"dev1"))
-    
-    with pytest.raises(ValueError, match="'dev' versions cannot be compared"):
-        SemanticVersion("1.1.dev") < SemanticVersion((1,1,"dev1"))
-        
-    with pytest.raises(ValueError, match="'dev' versions cannot be compared"):
-        SemanticVersion("1.1.dev") > SemanticVersion((1,1,"dev1"))
+    assert SemanticVersion("1.1.1") < SemanticVersion((1, 2, "dev"))
+    assert SemanticVersion("1.1.1") > SemanticVersion((1, 0, "dev1"))
 
     with pytest.raises(ValueError, match="'dev' versions cannot be compared"):
-        SemanticVersion("1.1.dev") <= SemanticVersion((1,1,"dev1"))
-        
+        SemanticVersion("1.1.dev") < SemanticVersion((1, 1, "dev1"))
+
     with pytest.raises(ValueError, match="'dev' versions cannot be compared"):
-        SemanticVersion("1.1.dev") >= SemanticVersion((1,1,"dev1"))
+        SemanticVersion("1.1.dev") > SemanticVersion((1, 1, "dev1"))
+
+    with pytest.raises(ValueError, match="'dev' versions cannot be compared"):
+        SemanticVersion("1.1.dev") <= SemanticVersion((1, 1, "dev1"))
+
+    with pytest.raises(ValueError, match="'dev' versions cannot be compared"):
+        SemanticVersion("1.1.dev") >= SemanticVersion((1, 1, "dev1"))

@@ -1,5 +1,5 @@
 """A module containing various utilities."""
-from typing import Union, Iterable
+from typing import Iterable, Union
 
 from ansys.tools.versioning.exceptions import VersionError, VersionSyntaxError
 
@@ -327,15 +327,19 @@ class VersionNumber:
                 if valid_version_string(value):
                     return mystr.__new__(mystr, value)
                 else:
-                    raise ValueError("This version is not allowed. Only 'dev' is allowed with any combination numbers.")
+                    raise ValueError(
+                        "This version is not allowed. Only 'dev' is allowed with any combination numbers."
+                    )
         elif isinstance(value, int):
             return myint.__new__(myint, value)
 
+
 class VersionMeta:
     """Metaclass for version comparison.
-    
+
     Implements modification to magic methods.
     """
+
     def __le__(self, __x: Union[str, int]) -> bool:
         """Less equal.
 
@@ -406,7 +410,7 @@ class VersionMeta:
         If compared against a string which contains 'dev' it will always evaluate to False.
         If compared against an int, it will perform a classic 'equal' operation.
         """
-        
+
         if isinstance(self, str) and isinstance(__x, str) and "dev" in self and "dev" in __x:
             return str(self) == str(__x)
 
@@ -430,33 +434,36 @@ class VersionMeta:
         """Call the underlying __hash__ method."""
         return super().__hash__()
 
+
 def valid_version_string(version):
-    if isinstance(version, str) and (version.lower().replace("dev","").replace(".","").isdigit() or version.lower()=='dev'):
+    if isinstance(version, str) and (
+        version.lower().replace("dev", "").replace(".", "").isdigit() or version.lower() == "dev"
+    ):
         return True
     elif isinstance(version, int):
         return True
     else:
         return False
 
+
 def valid_semantic_version(iterable):
     valid_major_minor = all(
-      isinstance(each, int) or (
-        isinstance(each, str) and each.isdigit()
-      )
-    for each in iterable[:2])
+        isinstance(each, int) or (isinstance(each, str) and each.isdigit()) for each in iterable[:2]
+    )
     valid_patch = valid_version_string(iterable[2])
-    
+
     if valid_major_minor and valid_patch:
         return True
     else:
         return False
 
+
 class SemanticVersion(tuple):
     """
     Class for semantic versioning.
-    
+
     It is a subclass of tuple and can be instantiated from a string or a tuple.
-    
+
     You can use 'dev' in the patch version, but nowhere else.
 
     Parameters
@@ -464,7 +471,8 @@ class SemanticVersion(tuple):
     tuple : _type_
         _description_
     """
-    def __new__(cls: type, __iterable: Iterable=None, major=None, minor=None, patch=None):
+
+    def __new__(cls: type, __iterable: Iterable = None, major=None, minor=None, patch=None):
         """
         Construct class
 
@@ -495,14 +503,18 @@ class SemanticVersion(tuple):
 
         if isinstance(__iterable, str):
             if not valid_version_string(__iterable):
-                raise ValueError("Semantic version not allow characters other than numbers, 'dev' and dots")
+                raise ValueError(
+                    "Semantic version not allow characters other than numbers, 'dev' and dots"
+                )
             __iterable = __iterable.split(".")
 
         if len(__iterable) != 3:
             raise ValueError("Semantic version must have 3 components (major, minor, patch)")
 
         if not valid_semantic_version(__iterable):
-            raise ValueError("Semantic version format is incorrect. Only integers are allowed, and for patch also a string containing 'dev' is allowed")
+            raise ValueError(
+                "Semantic version format is incorrect. Only integers are allowed, and for patch also a string containing 'dev' is allowed"
+            )
 
         __iterable = tuple(VersionNumber(i) for i in __iterable)
         return super().__new__(cls, __iterable)
@@ -531,8 +543,10 @@ class SemanticVersion(tuple):
     def as_dict(self):
         return {"major": self.major, "minor": self.minor, "patch": self.patch}
 
+
 class mystr(VersionMeta, str):
     pass
+
 
 class myint(VersionMeta, int):
     pass
