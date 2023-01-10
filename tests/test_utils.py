@@ -142,6 +142,18 @@ def test_version():
 
     assert VersionNumber(1) != VersionNumber("dev")
     assert not (VersionNumber(1) == VersionNumber("dev"))
+    
+    # changing order
+    assert VersionNumber("dev") > VersionNumber(1)
+    assert VersionNumber("dev") > VersionNumber(999999)
+    assert VersionNumber("999999") < VersionNumber("dev")
+
+    assert VersionNumber("dev") >= VersionNumber(1)
+    assert VersionNumber("dev") >= VersionNumber(999999)
+    assert VersionNumber("999999") <= VersionNumber("dev")
+
+    assert VersionNumber("dev") != VersionNumber(1)
+    assert not (VersionNumber("dev") == VersionNumber(1))
 
     with pytest.raises(ValueError):
         assert VersionNumber("dev") > VersionNumber("-1")

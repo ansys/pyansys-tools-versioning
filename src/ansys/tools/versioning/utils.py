@@ -539,16 +539,16 @@ class VersionNumber:
         """
         if isinstance(value, str):
             if value.strip().isdigit():
-                return myint.__new__(myint, int(value.strip()))
+                return myint(int(value.strip()))
             else:
                 if valid_version_string(value):
-                    return mystr.__new__(mystr, value)
+                    return mystr(value)
                 else:
                     raise ValueError(
-                        "This version is not allowed. Only 'dev' is allowed with any combination numbers."
+                        "This version is not allowed. Only 'dev' is allowed with any combination of numbers."
                     )
         elif isinstance(value, int):
-            return myint.__new__(myint, value)
+            return myint(value)
 
 def valid_version_string(version):
     """Check if version string is valid."""
