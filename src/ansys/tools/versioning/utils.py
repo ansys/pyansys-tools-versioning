@@ -483,7 +483,13 @@ class SemanticVersion(tuple):
 
     """
 
-    def __new__(cls: type, __iterable: Optional[Iterable] = None, major : Optional[VersionNumber] =None, minor : Optional[VersionNumber] =None, patch : Optional[VersionNumber] =None):
+    def __new__(
+        cls: type,
+        __iterable: Optional[Iterable] = None,
+        major: Optional[VersionNumber] = None,
+        minor: Optional[VersionNumber] = None,
+        patch: Optional[VersionNumber] = None,
+    ):
         """Construct class.
 
         Parameters

@@ -218,7 +218,7 @@ def test_semantic_version_comparison():
 def test_semantic_version_comparison_dev():
     assert SemanticVersion("1.1.1") < SemanticVersion((1, 1, "dev"))
     assert SemanticVersion("1.1.1") < SemanticVersion((1, 1, "dev1"))
-    assert SemanticVersion((1, 1, "dev")) >  SemanticVersion("1.1.1")
+    assert SemanticVersion((1, 1, "dev")) > SemanticVersion("1.1.1")
     assert SemanticVersion((1, 1, "dev1")) > SemanticVersion("1.1.1")
 
     assert SemanticVersion("1.1.dev1") == SemanticVersion((1, 1, "dev1"))
