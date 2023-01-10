@@ -1,5 +1,5 @@
 """A module containing various utilities."""
-from typing import Iterable, Union
+from typing import Iterable, Union, Optional
 
 from ansys.tools.versioning.exceptions import VersionError, VersionSyntaxError
 
@@ -285,57 +285,6 @@ def requires_version(version, VERSION_MAP=None):
     return decorator
 
 
-class VersionNumber:
-    """Class for version comparison.
-
-    This class can be instantiated from a string or an integer.
-    The constructor will choose the corresponding class.
-
-    Any combination of 'dev' and integers will be considered as a string.
-    'dev' is considered as the highest version number possible.
-
-    Examples
-    --------
-    >>> from ansys.tools.versioning.utils import VersionNumber
-    >>> VersionNumber(1)
-    1
-    >>> VersionNumber("dev")
-    'dev'
-    >>> VersionNumber(1) <= VersionNumber("dev")
-    True
-    >>> VersionNumber(99999) >= VersionNumber("dev")
-    False
-    >>> VersionNumber("dev") == VersionNumber("dev1")
-    False
-    >>> VersionNumber("dev") != VersionNumber("dev1")
-    True
-    """
-
-    def __new__(cls, value: Union[str, int]) -> Union[mystr, myint]:
-        """Create and return a new object.
-
-        Parameters
-        ----------
-        value : str or int
-            Version value to be stored.
-
-        Returns
-        -------
-        mystr, myint
-           Subclass of str or int depending on value.
-        """
-        if isinstance(value, str):
-            if value.strip().isdigit():
-                return myint.__new__(myint, int(value.strip()))
-            else:
-                if valid_version_string(value):
-                    return mystr.__new__(mystr, value)
-                else:
-                    raise ValueError(
-                        "This version is not allowed. Only 'dev' is allowed with any combination numbers."
-                    )
-        elif isinstance(value, int):
-            return myint.__new__(myint, value)
 
 
 class VersionMeta:
@@ -438,41 +387,6 @@ class VersionMeta:
         return super().__hash__()
 
 
-def valid_version_string(version):
-    """Check if version string is valid."""
-    if isinstance(version, str) and _valid_version_string(version):
-        return True
-    elif isinstance(version, int):
-        return True
-    else:
-        return False
-
-
-def _valid_version_string(version):
-    version = version.lower()
-
-    first_test = version.replace("dev", "").replace(".", "").isdigit() or version == "dev"
-    second_test = version.startswith("dev") if "dev" in version else True
-
-    if first_test and second_test:
-        return True
-    else:
-        return False
-
-
-def valid_semantic_version(iterable):
-    """Check if a semantic version is valid."""
-    valid_major_minor = all(
-        isinstance(each, int) or (isinstance(each, str) and each.isdigit()) for each in iterable[:2]
-    )
-    valid_patch = valid_version_string(iterable[2])
-
-    if valid_major_minor and valid_patch:
-        return True
-    else:
-        return False
-
-
 class SemanticVersion(tuple):
     """
     Class for semantic versioning.
@@ -486,9 +400,9 @@ class SemanticVersion(tuple):
     def __new__(
         cls: type,
         __iterable: Optional[Iterable] = None,
-        major: Optional[VersionNumber] = None,
-        minor: Optional[VersionNumber] = None,
-        patch: Optional[VersionNumber] = None,
+        major: Optional[Union[int, str]] = None,
+        minor: Optional[Union[int, str]] = None,
+        patch: Optional[Union[int, str]] = None,
     ):
         """Construct class.
 
@@ -582,3 +496,90 @@ class myint(VersionMeta, int):
     """Custom class to hold integers for versioning."""
 
     pass
+
+
+class VersionNumber:
+    """Class for version comparison.
+
+    This class can be instantiated from a string or an integer.
+    The constructor will choose the corresponding class.
+
+    Any combination of 'dev' and integers will be considered as a string.
+    'dev' is considered as the highest version number possible.
+
+    Examples
+    --------
+    >>> from ansys.tools.versioning.utils import VersionNumber
+    >>> VersionNumber(1)
+    1
+    >>> VersionNumber("dev")
+    'dev'
+    >>> VersionNumber(1) <= VersionNumber("dev")
+    True
+    >>> VersionNumber(99999) >= VersionNumber("dev")
+    False
+    >>> VersionNumber("dev") == VersionNumber("dev1")
+    False
+    >>> VersionNumber("dev") != VersionNumber("dev1")
+    True
+    """
+
+    def __new__(cls, value: Union[str, int]) -> Union[mystr, myint]:
+        """Create and return a new object.
+
+        Parameters
+        ----------
+        value : str or int
+            Version value to be stored.
+
+        Returns
+        -------
+        mystr, myint
+           Subclass of str or int depending on value.
+        """
+        if isinstance(value, str):
+            if value.strip().isdigit():
+                return myint.__new__(myint, int(value.strip()))
+            else:
+                if valid_version_string(value):
+                    return mystr.__new__(mystr, value)
+                else:
+                    raise ValueError(
+                        "This version is not allowed. Only 'dev' is allowed with any combination numbers."
+                    )
+        elif isinstance(value, int):
+            return myint.__new__(myint, value)
+
+def valid_version_string(version):
+    """Check if version string is valid."""
+    if isinstance(version, str) and _valid_version_string(version):
+        return True
+    elif isinstance(version, int):
+        return True
+    else:
+        return False
+
+
+def _valid_version_string(version):
+    version = version.lower()
+
+    first_test = version.replace("dev", "").replace(".", "").isdigit() or version == "dev"
+    second_test = version.startswith("dev") if "dev" in version else True
+
+    if first_test and second_test:
+        return True
+    else:
+        return False
+
+
+def valid_semantic_version(iterable):
+    """Check if a semantic version is valid."""
+    valid_major_minor = all(
+        isinstance(each, int) or (isinstance(each, str) and each.isdigit()) for each in iterable[:2]
+    )
+    valid_patch = valid_version_string(iterable[2])
+
+    if valid_major_minor and valid_patch:
+        return True
+    else:
+        return False

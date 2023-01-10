@@ -224,9 +224,12 @@ def test_semantic_version_comparison_dev():
     assert SemanticVersion("1.1.dev1") == SemanticVersion((1, 1, "dev1"))
     assert SemanticVersion("1.1.dev1") != SemanticVersion((1, 1, "dev0"))
 
+    assert SemanticVersion((1, 1, "dev1")) == SemanticVersion("1.1.dev1")
+    assert SemanticVersion((1, 1, "dev0")) != SemanticVersion("1.1.dev1")
+
     # checking major minors
-    assert SemanticVersion("1.1.1") < SemanticVersion((1, 2, "dev"))
-    assert SemanticVersion("1.1.1") > SemanticVersion((1, 0, "dev1"))
+    assert SemanticVersion((1, 2, "dev")) >  SemanticVersion("1.1.1")
+    assert SemanticVersion((1, 0, "dev1")) < SemanticVersion("1.1.1") 
 
     with pytest.raises(ValueError, match="'dev' versions cannot be compared"):
         SemanticVersion("1.1.dev") < SemanticVersion((1, 1, "dev1"))
