@@ -303,7 +303,7 @@ class Version(int):
     False
     """
 
-    def __new__(cls, value : Union[str, int]):
+    def __new__(cls, value: Union[str, int]):
         """Create and return a new object.
 
         Args:
