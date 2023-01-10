@@ -142,7 +142,7 @@ def test_version():
 
     assert VersionNumber(1) != VersionNumber("dev")
     assert not (VersionNumber(1) == VersionNumber("dev"))
-    
+
     # changing order
     assert VersionNumber("dev") > VersionNumber(1)
     assert VersionNumber("dev") > VersionNumber(999999)
@@ -240,8 +240,8 @@ def test_semantic_version_comparison_dev():
     assert SemanticVersion((1, 1, "dev0")) != SemanticVersion("1.1.dev1")
 
     # checking major minors
-    assert SemanticVersion((1, 2, "dev")) >  SemanticVersion("1.1.1")
-    assert SemanticVersion((1, 0, "dev1")) < SemanticVersion("1.1.1") 
+    assert SemanticVersion((1, 2, "dev")) > SemanticVersion("1.1.1")
+    assert SemanticVersion((1, 0, "dev1")) < SemanticVersion("1.1.1")
 
     with pytest.raises(ValueError, match="'dev' versions cannot be compared"):
         SemanticVersion("1.1.dev") < SemanticVersion((1, 1, "dev1"))

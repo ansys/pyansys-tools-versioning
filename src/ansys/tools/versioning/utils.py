@@ -1,5 +1,5 @@
 """A module containing various utilities."""
-from typing import Iterable, Union, Optional
+from typing import Iterable, Optional, Union
 
 from ansys.tools.versioning.exceptions import VersionError, VersionSyntaxError
 
@@ -285,8 +285,6 @@ def requires_version(version, VERSION_MAP=None):
     return decorator
 
 
-
-
 class VersionMeta:
     """Metaclass for version comparison.
 
@@ -549,6 +547,7 @@ class VersionNumber:
                     )
         elif isinstance(value, int):
             return myint(value)
+
 
 def valid_version_string(version):
     """Check if version string is valid."""
