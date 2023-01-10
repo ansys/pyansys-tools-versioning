@@ -98,7 +98,7 @@ def version_string_as_tuple(version_string):
             "Version string can only contain positive integers following <MAJOR>.<MINOR>.<PATCH> versioning."
         )
 
-    return sanitize_version_tuple(version_tuple)
+    return SemanticVersion(sanitize_version_tuple(version_tuple))
 
 
 def version_tuple_as_string(version_tuple):
@@ -352,7 +352,7 @@ class VersionMeta:
             elif "dev" in __x:
                 return True
             else:
-                raise ValueError("Invalid version string")
+                raise VersionSyntaxError("Invalid version string")
         else:
             return super().__le__(__x)
 
@@ -368,7 +368,7 @@ class VersionMeta:
             elif "dev" in __x:
                 return True
             else:
-                raise ValueError("Invalid version string")
+                raise VersionSyntaxError("Invalid version string")
         else:
             return super().__lt__(__x)
 
@@ -384,7 +384,7 @@ class VersionMeta:
             elif "dev" in __x:
                 return False
             else:
-                raise ValueError("Invalid version string")
+                raise VersionSyntaxError("Invalid version string")
         else:
             return super().__ge__(__x)
 
@@ -400,7 +400,7 @@ class VersionMeta:
             elif "dev" in __x:
                 return False
             else:
-                raise ValueError("Invalid version string")
+                raise VersionSyntaxError("Invalid version string")
         else:
             return super().__gt__(__x)
 
@@ -436,15 +436,23 @@ class VersionMeta:
 
 def valid_version_string(version):
     """Check if version string is valid."""
-    if isinstance(version, str) and (
-        version.lower().replace("dev", "").replace(".", "").isdigit() or version.lower() == "dev"
-    ):
+    if isinstance(version, str) and _valid_version_string(version):
         return True
     elif isinstance(version, int):
         return True
     else:
         return False
 
+def _valid_version_string(version):
+    version = version.lower()
+
+    first_test = version.replace("dev", "").replace(".", "").isdigit() or version == "dev"
+    second_test = version.startswith("dev") if "dev" in version else True
+
+    if first_test and second_test:
+        return True
+    else:
+        return False
 
 def valid_semantic_version(iterable):
     """Check if a semantic version is valid."""
@@ -499,20 +507,21 @@ class SemanticVersion(tuple):
             if major and minor and patch:
                 __iterable = (major, minor, patch)
             else:
-                raise ValueError("Semantic version must have 3 components (major, minor, patch)")
+                raise VersionSyntaxError("Semantic version must have 3 components (major, minor, patch)")
 
         if isinstance(__iterable, str):
-            if not valid_version_string(__iterable):
-                raise ValueError(
+            __iterable = __iterable.split(".")
+            
+            if not all(valid_version_string(each) for each in __iterable):
+                raise VersionSyntaxError(
                     "Semantic version not allow characters other than numbers, 'dev' and dots"
                 )
-            __iterable = __iterable.split(".")
 
         if len(__iterable) != 3:
-            raise ValueError("Semantic version must have 3 components (major, minor, patch)")
+            raise VersionSyntaxError("Semantic version must have 3 components (major, minor, patch)")
 
         if not valid_semantic_version(__iterable):
-            raise ValueError(
+            raise VersionSyntaxError(
                 "Semantic version format is incorrect. Only integers are allowed, and for patch also a string containing 'dev' is allowed"
             )
 

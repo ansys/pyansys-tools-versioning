@@ -107,7 +107,7 @@ def test_server_meets_version_error():
 
 
 def test_dev_version_patch():
-    my_version = "0.0.0dev1"
+    my_version = "0.0.dev1"
     assert server_meets_version(my_version, "0.0.0") == True
     assert server_meets_version(my_version, "0.0.1") == True
     assert server_meets_version(my_version, "0.0.999") == True
@@ -121,28 +121,14 @@ def test_dev_version_patch():
 
 def test_dev_version_minor():
     my_version = "0.dev.1"
-    assert server_meets_version(my_version, "0.0.0") == True
-    assert server_meets_version(my_version, "0.0.1") == True
-    assert server_meets_version(my_version, "0.0.999") == True
-
-    assert server_meets_version(my_version, "0.2.0") == True
-    assert server_meets_version(my_version, "0.2.9999") == True
-
-    assert server_meets_version(my_version, "3.1.0") == False
-    assert server_meets_version(my_version, "3.1.9999") == False
+    with pytest.raises(VersionSyntaxError):
+        server_meets_version(my_version, "0.0.0")
 
 
 def test_dev_version_major():
     my_version = "dev.1.1"
-    assert server_meets_version(my_version, "0.0.0") == True
-    assert server_meets_version(my_version, "0.0.1") == True
-    assert server_meets_version(my_version, "0.0.999") == True
-
-    assert server_meets_version(my_version, "0.2.0") == True
-    assert server_meets_version(my_version, "0.2.9999") == True
-
-    assert server_meets_version(my_version, "3.1.0") == True
-    assert server_meets_version(my_version, "3.1.9999") == True
+    with pytest.raises(VersionSyntaxError):
+        assert server_meets_version(my_version, "0.0.0")
 
 
 def test_version():
@@ -177,22 +163,22 @@ def test_semantic_version_definition():
     assert SemanticVersion("1.1.dev")
     assert SemanticVersion("1.1.dev1")
 
-    with pytest.raises(ValueError):
+    with pytest.raises(VersionSyntaxError):
         SemanticVersion((1, 2))
 
-    with pytest.raises(ValueError):
+    with pytest.raises(VersionSyntaxError):
         SemanticVersion(major=1, minor=2)
 
-    with pytest.raises(ValueError):
+    with pytest.raises(VersionSyntaxError):
         SemanticVersion(major=1, minor=2, patch="dev.a")
 
-    with pytest.raises(ValueError):
+    with pytest.raises(VersionSyntaxError):
         SemanticVersion(major=1, minor="dev", patch="dev1")
 
-    with pytest.raises(ValueError):
+    with pytest.raises(VersionSyntaxError):
         SemanticVersion("1.1.deva")
 
-    with pytest.raises(ValueError):
+    with pytest.raises(VersionSyntaxError):
         SemanticVersion("1.1")
 
 
