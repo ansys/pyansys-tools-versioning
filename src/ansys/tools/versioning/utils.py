@@ -443,6 +443,7 @@ def valid_version_string(version):
     else:
         return False
 
+
 def _valid_version_string(version):
     version = version.lower()
 
@@ -453,6 +454,7 @@ def _valid_version_string(version):
         return True
     else:
         return False
+
 
 def valid_semantic_version(iterable):
     """Check if a semantic version is valid."""
@@ -507,18 +509,22 @@ class SemanticVersion(tuple):
             if major and minor and patch:
                 __iterable = (major, minor, patch)
             else:
-                raise VersionSyntaxError("Semantic version must have 3 components (major, minor, patch)")
+                raise VersionSyntaxError(
+                    "Semantic version must have 3 components (major, minor, patch)"
+                )
 
         if isinstance(__iterable, str):
             __iterable = __iterable.split(".")
-            
+
             if not all(valid_version_string(each) for each in __iterable):
                 raise VersionSyntaxError(
                     "Semantic version not allow characters other than numbers, 'dev' and dots"
                 )
 
         if len(__iterable) != 3:
-            raise VersionSyntaxError("Semantic version must have 3 components (major, minor, patch)")
+            raise VersionSyntaxError(
+                "Semantic version must have 3 components (major, minor, patch)"
+            )
 
         if not valid_semantic_version(__iterable):
             raise VersionSyntaxError(
