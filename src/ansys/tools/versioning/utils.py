@@ -410,7 +410,6 @@ class VersionMeta:
         If compared against a string which contains 'dev' it will always evaluate to False.
         If compared against an int, it will perform a classic 'equal' operation.
         """
-
         if isinstance(self, str) and isinstance(__x, str) and "dev" in self and "dev" in __x:
             return str(self) == str(__x)
 
@@ -436,6 +435,7 @@ class VersionMeta:
 
 
 def valid_version_string(version):
+    """Check if version string is valid."""
     if isinstance(version, str) and (
         version.lower().replace("dev", "").replace(".", "").isdigit() or version.lower() == "dev"
     ):
@@ -447,6 +447,7 @@ def valid_version_string(version):
 
 
 def valid_semantic_version(iterable):
+    """Check if a semantic version is valid."""
     valid_major_minor = all(
         isinstance(each, int) or (isinstance(each, str) and each.isdigit()) for each in iterable[:2]
     )
@@ -473,8 +474,7 @@ class SemanticVersion(tuple):
     """
 
     def __new__(cls: type, __iterable: Iterable = None, major=None, minor=None, patch=None):
-        """
-        Construct class
+        """Construct class.
 
         Parameters
         ----------
@@ -521,32 +521,41 @@ class SemanticVersion(tuple):
 
     @property
     def major(self):
+        """Return major version number"""
         return self[0]
 
     @property
     def minor(self):
+        """Return minor version number"""
         return self[1]
 
     @property
     def patch(self):
+        """Return patch version number"""
         return self[2]
 
     def as_string(self):
+        """Return the version as string"""
         return ".".join(str(i) for i in self)
 
     def as_tuple(self):
+        """Return the version as tuple"""
         return tuple(self)
 
     def as_list(self):
+        """Return the version as list"""
         return list(self)
 
     def as_dict(self):
+        """Return the version as dict"""
         return {"major": self.major, "minor": self.minor, "patch": self.patch}
 
 
 class mystr(VersionMeta, str):
+    """Custom class to hold strings for versioning"""
     pass
 
 
 class myint(VersionMeta, int):
+    """Custom class to hold integers for versioning"""
     pass
