@@ -521,43 +521,43 @@ class SemanticVersion(tuple):
 
     @property
     def major(self):
-        """Return major version number"""
+        """Return major version number."""
         return self[0]
 
     @property
     def minor(self):
-        """Return minor version number"""
+        """Return minor version number."""
         return self[1]
 
     @property
     def patch(self):
-        """Return patch version number"""
+        """Return patch version number."""
         return self[2]
 
     def as_string(self):
-        """Return the version as string"""
+        """Return the version as string."""
         return ".".join(str(i) for i in self)
 
     def as_tuple(self):
-        """Return the version as tuple"""
+        """Return the version as tuple."""
         return tuple(self)
 
     def as_list(self):
-        """Return the version as list"""
+        """Return the version as list."""
         return list(self)
 
     def as_dict(self):
-        """Return the version as dict"""
+        """Return the version as dict."""
         return {"major": self.major, "minor": self.minor, "patch": self.patch}
 
 
 class mystr(VersionMeta, str):
-    """Custom class to hold strings for versioning"""
+    """Custom class to hold strings for versioning."""
 
     pass
 
 
 class myint(VersionMeta, int):
-    """Custom class to hold integers for versioning"""
+    """Custom class to hold integers for versioning."""
 
     pass
