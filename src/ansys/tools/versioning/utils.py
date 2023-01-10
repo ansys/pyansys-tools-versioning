@@ -1,4 +1,5 @@
 """A module containing various utilities."""
+from typing import Union
 
 from ansys.tools.versioning.exceptions import VersionError, VersionSyntaxError
 
@@ -319,7 +320,7 @@ class Version(int):
         elif isinstance(value, int):
             return super().__new__(cls, value)
 
-    def __le__(self, __x: int) -> bool:
+    def __le__(self, __x: Union[str, int]) -> bool:
         """Less equal.
 
         If compared against a string which contains 'dev' it will always evaluate to True.
@@ -330,10 +331,12 @@ class Version(int):
                 return True
             else:
                 raise ValueError("Invalid version string")
+        elif isinstance(self, int) and isinstance(__x, int):
+            return True
         else:
             return super().__le__(__x)
 
-    def __lt__(self, __x: int) -> bool:
+    def __lt__(self, __x: Union[str, int]) -> bool:
         """Less than.
 
         If compared against a string which contains 'dev' it will always evaluate to True.
@@ -347,7 +350,7 @@ class Version(int):
         else:
             return super().__lt__(__x)
 
-    def __ge__(self, __x: int) -> bool:
+    def __ge__(self, __x: Union[str, int]) -> bool:
         """Greater equal.
 
         If compared against a string which contains 'dev' it will always evaluate to False.
@@ -361,7 +364,7 @@ class Version(int):
         else:
             return super().__ge__(__x)
 
-    def __gt__(self, __x: int) -> bool:
+    def __gt__(self, __x: Union[str, int]) -> bool:
         """Greater than.
 
         If compared against a string which contains 'dev' it will always evaluate to False.
