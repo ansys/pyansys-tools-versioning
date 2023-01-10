@@ -553,9 +553,11 @@ class SemanticVersion(tuple):
 
 class mystr(VersionMeta, str):
     """Custom class to hold strings for versioning"""
+
     pass
 
 
 class myint(VersionMeta, int):
     """Custom class to hold integers for versioning"""
+
     pass
