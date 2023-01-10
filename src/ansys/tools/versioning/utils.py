@@ -1,5 +1,5 @@
 """A module containing various utilities."""
-from typing import Union
+from typing import Union, Iterable
 
 from ansys.tools.versioning.exceptions import VersionError, VersionSyntaxError
 
@@ -57,9 +57,9 @@ def sanitize_version_tuple(version_tuple):
 
     """
     version_list = list(version_tuple)
-    version_list = [Version(num) for num in version_list]
+    version_list = [VersionNumber(num) for num in version_list]
     while len(version_list) < 3:
-        version_list.append(Version(0))
+        version_list.append(VersionNumber(0))
     return tuple(version_list)
 
 
@@ -87,10 +87,10 @@ def version_string_as_tuple(version_string):
     """
     try:
         # Check version string numbers are numeric by converting to integers
-        version_tuple = tuple(map(Version, version_string.split(".")))
+        version_tuple = tuple(map(VersionNumber, version_string.split(".")))
 
         # Check version numbers are positive integers
-        if not all(num >= Version(0) for num in version_tuple):
+        if not all(num >= VersionNumber(0) for num in version_tuple):
             raise ValueError
 
     except ValueError:
@@ -285,30 +285,33 @@ def requires_version(version, VERSION_MAP=None):
     return decorator
 
 
-class Version(int):
+class VersionNumber:
     """Class for version comparison.
 
     This class can be instantiated from a string or an integer.
     The constructor will choose the corresponding class.
 
+    Any combination of 'dev' and integers will be considered as a string.
+    'dev' is considered as the highest version number possible.
+
     Examples
     --------
-    >>> from ansys.tools.versioning.utils import Version
-    >>> Version(1)
+    >>> from ansys.tools.versioning.utils import VersionNumber
+    >>> VersionNumber(1)
     1
-    >>> Version("dev")
+    >>> VersionNumber("dev")
     'dev'
-    >>> Version(1) <= Version("dev")
+    >>> VersionNumber(1) <= VersionNumber("dev")
     True
-    >>> Version(99999) >= Version("dev")
+    >>> VersionNumber(99999) >= VersionNumber("dev")
     False
-    >>> Version("dev") == Version("dev1")
+    >>> VersionNumber("dev") == VersionNumber("dev1")
     False
-    >>> Version("dev") != Version("dev1")
+    >>> VersionNumber("dev") != VersionNumber("dev1")
     True
     """
 
-    def __new__(cls, value: Union[str, int]):
+    def __new__(cls, value: Union[str, int]) -> Union[str, int]:
         """Create and return a new object.
 
         Args:
@@ -319,12 +322,20 @@ class Version(int):
         """
         if isinstance(value, str):
             if value.strip().isdigit():
-                return super().__new__(cls, int(value.strip()))
+                return myint.__new__(myint, int(value.strip()))
             else:
-                return str.__new__(str, value)
+                if valid_version_string(value):
+                    return mystr.__new__(mystr, value)
+                else:
+                    raise ValueError("This version is not allowed. Only 'dev' is allowed with any combination numbers.")
         elif isinstance(value, int):
-            return super().__new__(cls, value)
+            return myint.__new__(myint, value)
 
+class VersionMeta:
+    """Metaclass for version comparison.
+    
+    Implements modification to magic methods.
+    """
     def __le__(self, __x: Union[str, int]) -> bool:
         """Less equal.
 
@@ -332,12 +343,12 @@ class Version(int):
         If compared against an int, it will perform a classic 'less equal' operation.
         """
         if isinstance(__x, str):
-            if "dev" in __x:
+            if "dev" in __x and isinstance(self, str) and "dev" in self:
+                raise ValueError("Two 'dev' versions cannot be compared against.")
+            elif "dev" in __x:
                 return True
             else:
                 raise ValueError("Invalid version string")
-        elif isinstance(self, int) and isinstance(__x, int):
-            return True
         else:
             return super().__le__(__x)
 
@@ -348,7 +359,9 @@ class Version(int):
         If compared against an int, it will perform a classic 'less than' operation.
         """
         if isinstance(__x, str):
-            if "dev" in __x:
+            if "dev" in __x and isinstance(self, str) and "dev" in self:
+                raise ValueError("Two 'dev' versions cannot be compared against.")
+            elif "dev" in __x:
                 return True
             else:
                 raise ValueError("Invalid version string")
@@ -362,7 +375,9 @@ class Version(int):
         If compared against an int, it will perform a classic 'greater equal' operation.
         """
         if isinstance(__x, str):
-            if "dev" in __x:
+            if "dev" in __x and isinstance(self, str) and "dev" in self:
+                raise ValueError("Two 'dev' versions cannot be compared against.")
+            elif "dev" in __x:
                 return False
             else:
                 raise ValueError("Invalid version string")
@@ -376,7 +391,9 @@ class Version(int):
         If compared against an int, it will perform a classic 'greater than' operation.
         """
         if isinstance(__x, str):
-            if "dev" in __x:
+            if "dev" in __x and isinstance(self, str) and "dev" in self:
+                raise ValueError("Two 'dev' versions cannot be compared against.")
+            elif "dev" in __x:
                 return False
             else:
                 raise ValueError("Invalid version string")
@@ -389,7 +406,11 @@ class Version(int):
         If compared against a string which contains 'dev' it will always evaluate to False.
         If compared against an int, it will perform a classic 'equal' operation.
         """
-        if isinstance(__x, str):
+        
+        if isinstance(self, str) and isinstance(__x, str) and "dev" in self and "dev" in __x:
+            return str(self) == str(__x)
+
+        elif isinstance(__x, str):
             return False
         else:
             return super().__eq__(__x)
@@ -408,3 +429,110 @@ class Version(int):
     def __hash__(self) -> int:
         """Call the underlying __hash__ method."""
         return super().__hash__()
+
+def valid_version_string(version):
+    if isinstance(version, str) and (version.lower().replace("dev","").replace(".","").isdigit() or version.lower()=='dev'):
+        return True
+    elif isinstance(version, int):
+        return True
+    else:
+        return False
+
+def valid_semantic_version(iterable):
+    valid_major_minor = all(
+      isinstance(each, int) or (
+        isinstance(each, str) and each.isdigit()
+      )
+    for each in iterable[:2])
+    valid_patch = valid_version_string(iterable[2])
+    
+    if valid_major_minor and valid_patch:
+        return True
+    else:
+        return False
+
+class SemanticVersion(tuple):
+    """
+    Class for semantic versioning.
+    
+    It is a subclass of tuple and can be instantiated from a string or a tuple.
+    
+    You can use 'dev' in the patch version, but nowhere else.
+
+    Parameters
+    ----------
+    tuple : _type_
+        _description_
+    """
+    def __new__(cls: type, __iterable: Iterable=None, major=None, minor=None, patch=None):
+        """
+        Construct class
+
+        Parameters
+        ----------
+        cls : type
+            Class type
+        __iterable : Iterable[str, int], optional
+            Iterable with major, minor and patch numbers as str or int, by default None
+        major : _type_, optional
+            Major version digit, by default None
+        minor : _type_, optional
+            Minor version digit, by default None
+        patch : _type_, optional
+            Patch version digit, by default None
+
+        Returns
+        -------
+        myint, mystr
+            Depending on the input, the output will be a myint or a mystr class.
+
+        """
+        if __iterable is None:
+            if major and minor and patch:
+                __iterable = (major, minor, patch)
+            else:
+                raise ValueError("Semantic version must have 3 components (major, minor, patch)")
+
+        if isinstance(__iterable, str):
+            if not valid_version_string(__iterable):
+                raise ValueError("Semantic version not allow characters other than numbers, 'dev' and dots")
+            __iterable = __iterable.split(".")
+
+        if len(__iterable) != 3:
+            raise ValueError("Semantic version must have 3 components (major, minor, patch)")
+
+        if not valid_semantic_version(__iterable):
+            raise ValueError("Semantic version format is incorrect. Only integers are allowed, and for patch also a string containing 'dev' is allowed")
+
+        __iterable = tuple(VersionNumber(i) for i in __iterable)
+        return super().__new__(cls, __iterable)
+
+    @property
+    def major(self):
+        return self[0]
+
+    @property
+    def minor(self):
+        return self[1]
+
+    @property
+    def patch(self):
+        return self[2]
+
+    def as_string(self):
+        return ".".join(str(i) for i in self)
+
+    def as_tuple(self):
+        return tuple(self)
+
+    def as_list(self):
+        return list(self)
+
+    def as_dict(self):
+        return {"major": self.major, "minor": self.minor, "patch": self.patch}
+
+class mystr(VersionMeta, str):
+    pass
+
+class myint(VersionMeta, int):
+    pass
