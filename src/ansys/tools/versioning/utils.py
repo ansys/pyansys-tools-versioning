@@ -57,8 +57,9 @@ def sanitize_version_tuple(version_tuple):
 
     """
     version_list = list(version_tuple)
+    version_list = [Version(num) for num in version_list]
     while len(version_list) < 3:
-        version_list.append(0)
+        version_list.append(Version(0))
     return tuple(version_list)
 
 
@@ -301,6 +302,10 @@ class Version(int):
     True
     >>> Version(99999) >= Version("dev")
     False
+    >>> Version("dev") == Version("dev1")
+    False
+    >>> Version("dev") != Version("dev1")
+    True
     """
 
     def __new__(cls, value: Union[str, int]):
