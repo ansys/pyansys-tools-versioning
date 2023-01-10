@@ -311,14 +311,18 @@ class VersionNumber:
     True
     """
 
-    def __new__(cls, value: Union[str, int]) -> Union[str, int]:
+    def __new__(cls, value: Union[str, int]) -> Union[mystr, myint]:
         """Create and return a new object.
 
-        Args:
-            value (str or int):
+        Parameters
+        ----------
+        value : str or int
+            Version value to be stored.
 
-        Returns:
-            str, int: Returns a subclass of str or int depending on value.
+        Returns
+        -------
+        mystr, myint
+           Subclass of str or int depending on value.
         """
         if isinstance(value, str):
             if value.strip().isdigit():
@@ -477,13 +481,9 @@ class SemanticVersion(tuple):
 
     You can use 'dev' in the patch version, but nowhere else.
 
-    Parameters
-    ----------
-    tuple : _type_
-        _description_
     """
 
-    def __new__(cls: type, __iterable: Iterable = None, major=None, minor=None, patch=None):
+    def __new__(cls: type, __iterable: Optional[Iterable] = None, major : Optional[VersionNumber] =None, minor : Optional[VersionNumber] =None, patch : Optional[VersionNumber] =None):
         """Construct class.
 
         Parameters
@@ -491,13 +491,13 @@ class SemanticVersion(tuple):
         cls : type
             Class type
         __iterable : Iterable[str, int], optional
-            Iterable with major, minor and patch numbers as str or int, by default None
-        major : _type_, optional
-            Major version digit, by default None
-        minor : _type_, optional
-            Minor version digit, by default None
-        patch : _type_, optional
-            Patch version digit, by default None
+            Iterable with major, minor and patch numbers as str or int, by default None.
+        major : VersionNumber, optional
+            Major version digit, by default None.
+        minor : VersionNumber, optional
+            Minor version digit, by default None.
+        patch : VersionNumber, optional
+            Patch version digit, by default None.
 
         Returns
         -------
