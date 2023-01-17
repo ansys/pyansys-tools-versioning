@@ -30,6 +30,7 @@ and a ``VERSION_MAP`` dictionary
         (0, 5, 1): "2022R1",
     }
 
+
     class Server:
         """A basic class for modelling a server."""
 
@@ -61,7 +62,8 @@ execute the ``old_method`` function:
 .. code-block:: pycon
 
     >>> for server in [old_server, new_server]:
-    >>>     server.old_method()
+    ...     server.old_method()
+    ...
 
 However, when trying to run ``new_method``, the old server raises a
 ``VersionError`` exception, indicating that a higher server version is required:
