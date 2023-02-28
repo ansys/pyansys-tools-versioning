@@ -209,7 +209,6 @@ def server_meets_version(server_version, required_version):
     for ith_num, (server_version_number, required_version_number) in enumerate(
         zip(server_version, required_version), start=1
     ):
-
         # Keep comparing if both numbers are the same
         if server_version_number == required_version_number and ith_num != 3:
             continue
@@ -248,7 +247,6 @@ def requires_version(version, VERSION_MAP=None):
     """
 
     def decorator(func):
-
         # Sanitize input version
         min_version = (
             sanitize_version_tuple(version)
@@ -266,7 +264,6 @@ def requires_version(version, VERSION_MAP=None):
 
             # Raise exceptions if server version is not valid
             if not server_meets_version(self._server_version, min_version):
-
                 # Provide a generic version error message
                 if not VERSION_MAP:
                     raise VersionError(

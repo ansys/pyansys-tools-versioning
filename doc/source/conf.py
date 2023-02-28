@@ -26,10 +26,9 @@ html_short_title = html_title = project
 # specify the location of your github repo
 html_theme_options = {
     "switcher": {
-        "json_url": f"https://{cname}/release/versions.json",
+        "json_url": f"https://{cname}/versions.json",
         "version_match": get_version_match(__version__),
     },
-    "navbar_end": ["version-switcher", "theme-switcher", "navbar-icon-links"],
     "github_url": "https://github.com/pyansys/pyansys-tools-versioning",
     "show_prev_next": False,
     "show_breadcrumbs": True,
