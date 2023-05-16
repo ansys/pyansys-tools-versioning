@@ -14,12 +14,12 @@ PyAnsys Tools Versioning
    :target: https://pypi.org/project/pyansys-tools-versioning
    :alt: PyPI
 
-.. |codecov| image:: https://codecov.io/gh/pyansys/pyansys-tools-versioning/branch/main/graph/badge.svg
-   :target: https://codecov.io/gh/pyansys/pyansys-tools-versioning
+.. |codecov| image:: https://codecov.io/gh/ansys/pyansys-tools-versioning/branch/main/graph/badge.svg
+   :target: https://codecov.io/gh/ansys/pyansys-tools-versioning
    :alt: Codecov
 
-.. |GH-CI| image:: https://github.com/pyansys/pyansys-tools-versioning/actions/workflows/ci_cd.yml/badge.svg
-   :target: https://github.com/pyansys/pyansys-tools-versioning/actions/workflows/ci_cd.yml
+.. |GH-CI| image:: https://github.com/ansys/pyansys-tools-versioning/actions/workflows/ci_cd.yml/badge.svg
+   :target: https://github.com/ansys/pyansys-tools-versioning/actions/workflows/ci_cd.yml
    :alt: GH-CI
 
 .. |MIT| image:: https://img.shields.io/badge/License-MIT-yellow.svg
@@ -30,8 +30,8 @@ PyAnsys Tools Versioning
    :target: https://github.com/psf/black
    :alt: Black
 
-.. |pre-commit| image:: https://results.pre-commit.ci/badge/github/pyansys/pyansys-tools-versioning/main.svg
-   :target: https://results.pre-commit.ci/latest/github/pyansys/pyansys-tools-versioning/main
+.. |pre-commit| image:: https://results.pre-commit.ci/badge/github/ansys/pyansys-tools-versioning/main.svg
+   :target: https://results.pre-commit.ci/latest/github/ansys/pyansys-tools-versioning/main
    :alt: pre-commit.ci status
 
 Utilities for backwards and forwards server support.
@@ -71,7 +71,7 @@ need to follow these steps:
 
     .. code:: bash
 
-        git clone https://github.com/pyansys/pyansys-tools-versioning
+        git clone https://github.com/ansys/pyansys-tools-versioning
 
 2. Create a fresh-clean Python environment and activate it:
 

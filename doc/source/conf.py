@@ -29,7 +29,7 @@ html_theme_options = {
         "json_url": f"https://{cname}/versions.json",
         "version_match": get_version_match(__version__),
     },
-    "github_url": "https://github.com/pyansys/pyansys-tools-versioning",
+    "github_url": "https://github.com/ansys/pyansys-tools-versioning",
     "show_prev_next": False,
     "show_breadcrumbs": True,
     "additional_breadcrumbs": [

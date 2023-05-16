@@ -21,13 +21,13 @@ Alternatively, install the latest from GitHub via:
 
 .. code-block:: bash
 
-   python -m pip install git+https://github.com/pyansys/pyansys-tools-versioning.git
+   python -m pip install git+https://github.com/ansys/pyansys-tools-versioning.git
 
 For a local development version, install with (requires pip >= 22.0):
 
 .. code-block:: bash
 
-   git clone https://github.com/pyansys/pyansys-tools-versioning.git
+   git clone https://github.com/ansys/pyansys-tools-versioning.git
    cd pyansys-tools-versioning
    python -m pip install -e .
 

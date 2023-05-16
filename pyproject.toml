@@ -47,7 +47,7 @@ doc = [
 name = "ansys.tools.versioning"
 
 [project.urls]
-Source = "https://github.com/pyansys/pyansys-tools-versioning"
+Source = "https://github.com/ansys/pyansys-tools-versioning"
 
 [tool.black]
 line-length = 100
