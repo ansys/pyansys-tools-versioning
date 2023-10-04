@@ -3,11 +3,7 @@ PyAnsys Tools Versioning.
 
 Utilities for backwards and forwards server support.
 """
-
-try:
-    import importlib.metadata as importlib_metadata
-except ModuleNotFoundError:
-    import importlib_metadata
+import importlib.metadata as importlib_metadata
 
 from ansys.tools.versioning.utils import requires_version, server_meets_version
 
