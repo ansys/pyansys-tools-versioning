@@ -222,9 +222,11 @@ def server_meets_version(server_version, required_version):
 
     # Sanitize server and required version inputs
     server_version, required_version = [
-        version_string_as_tuple(version)
-        if isinstance(version, str)
-        else sanitize_version_tuple(version)
+        (
+            version_string_as_tuple(version)
+            if isinstance(version, str)
+            else sanitize_version_tuple(version)
+        )
         for version in [server_version, required_version]
     ]
 
