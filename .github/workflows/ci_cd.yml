@@ -119,7 +119,7 @@ jobs:
     needs: [docs-style]
     steps:
       - name: "Run Ansys documentation building action"
-        uses: ansys/actions/doc-build@fix/doc-build-linux
+        uses: ansys/actions/doc-build@v6
         with:
           python-version: ${{ env.MAIN_PYTHON_VERSION }}
           dependencies: "build-essential zip pandoc texlive-latex-extra latexmk texlive-pstricks"
