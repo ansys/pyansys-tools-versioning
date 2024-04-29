@@ -1,4 +1,3 @@
 API
 ANSYS
-Ansys
-ansys
+[Aa]nsys
