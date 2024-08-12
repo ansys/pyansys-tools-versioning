@@ -3,7 +3,7 @@
 from datetime import datetime
 import os
 
-from ansys_sphinx_theme import get_version_match, pyansys_logo_black
+from ansys_sphinx_theme import get_version_match
 from sphinx.builders.latex import LaTeXBuilder
 
 from ansys.tools.versioning import __version__
@@ -18,14 +18,14 @@ author = "ANSYS, Inc."
 release = version = __version__
 cname = os.getenv("DOCUMENTATION_CNAME", default="nocname.com")
 
-# use the default pyansys logo
-html_logo = pyansys_logo_black
+# use the default pyansys theme
 html_theme = "ansys_sphinx_theme"
 
 html_short_title = html_title = project
 
 # specify the location of your github repo
 html_theme_options = {
+    "logo": "pyansys",
     "switcher": {
         "json_url": f"https://{cname}/versions.json",
         "version_match": get_version_match(__version__),
