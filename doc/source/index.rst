@@ -11,4 +11,4 @@
 
    getting_started
    user_guide
-   autoapi/index
+   api/index

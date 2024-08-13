@@ -36,16 +36,20 @@ html_theme_options = {
     "additional_breadcrumbs": [
         ("PyAnsys", "https://docs.pyansys.com/"),
     ],
+    "ansys_sphinx_theme_autoapi": {
+        "project": project,
+    },
 }
 
 # Sphinx extensions
 extensions = [
-    "autoapi.extension",
     "sphinx.ext.autodoc",
     "sphinx.ext.autosummary",
     "numpydoc",
     "sphinx.ext.intersphinx",
     "sphinx_copybutton",
+    "sphinx_design",
+    "ansys_sphinx_theme.extension.autoapi",
 ]
 
 # Intersphinx mapping
@@ -94,17 +98,3 @@ source_suffix = ".rst"
 
 # The master toctree document.
 master_doc = "index"
-
-# Configuration for Sphinx autoapi
-autoapi_type = "python"
-autoapi_dirs = ["../../src/ansys"]
-autoapi_options = [
-    "members",
-    "undoc-members",
-    "show-inheritance",
-    "show-module-summary",
-    "special-members",
-]
-autoapi_template_dir = "_autoapi_templates"
-exclude_patterns = ["_autoapi_templates/index.rst"]
-autoapi_python_use_implicit_namespaces = True
