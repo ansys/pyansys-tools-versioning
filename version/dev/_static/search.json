@@ -1,0 +1,527 @@
+[
+    {
+        "objectID": "api/ansys/tools/versioning/exceptions/VersionError",
+        "href": "api/ansys/tools/versioning/exceptions/VersionError.html#versionerror",
+        "title": "VersionError",
+        "section": "VersionError",
+        "text": "Bases: Exception\nAn exception to be raised when a version is not valid.\nVersionError\nVersionError\nException"
+    },
+    {
+        "objectID": "api/ansys/tools/versioning/exceptions/VersionError",
+        "href": "api/ansys/tools/versioning/exceptions/VersionError.html#ansys.tools.versioning.exceptions.VersionError",
+        "title": "VersionError > VersionError > VersionError",
+        "section": "VersionError > VersionError",
+        "text": "exception ansys.tools.versioning.exceptions.VersionError(msg)\n\nBases: Exception\n\nAn exception to be raised when a version is not valid.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/tools/versioning/exceptions/VersionError",
+        "href": "api/ansys/tools/versioning/exceptions/VersionError.html#import-detail",
+        "title": "VersionError > Import detail",
+        "section": "Import detail",
+        "text": "Import detail"
+    },
+    {
+        "objectID": "api/ansys/tools/versioning/utils/mystr",
+        "href": "api/ansys/tools/versioning/utils/mystr.html#mystr",
+        "title": "mystr",
+        "section": "mystr",
+        "text": "Bases: VersionMeta, str\nCustom class to hold strings for versioning.\nmystr\nmystr\nVersionMeta\nstr"
+    },
+    {
+        "objectID": "api/ansys/tools/versioning/utils/mystr",
+        "href": "api/ansys/tools/versioning/utils/mystr.html#ansys.tools.versioning.utils.mystr",
+        "title": "mystr > mystr > mystr",
+        "section": "mystr > mystr",
+        "text": "class ansys.tools.versioning.utils.mystr\n\nBases: VersionMeta, str\n\nCustom class to hold strings for versioning.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/tools/versioning/utils/mystr",
+        "href": "api/ansys/tools/versioning/utils/mystr.html#import-detail",
+        "title": "mystr > Import detail",
+        "section": "Import detail",
+        "text": "Import detail"
+    },
+    {
+        "objectID": "api/ansys/tools/versioning/exceptions/index",
+        "href": "api/ansys/tools/versioning/exceptions/index.html#the-exceptionspy-module",
+        "title": "The exceptions.py module",
+        "section": "The exceptions.py module",
+        "text": "The exceptions.py module\nexceptions.py"
+    },
+    {
+        "objectID": "api/ansys/tools/versioning/exceptions/index",
+        "href": "api/ansys/tools/versioning/exceptions/index.html#summary",
+        "title": "The exceptions.py module > Summary",
+        "section": "Summary",
+        "text": "VersionSyntaxError\nAn exception to be raised when an invalid version syntax is found.\nVersionError\nAn exception to be raised when a version is not valid.\nSummary\nVersionSyntaxError\nVersionError"
+    },
+    {
+        "objectID": "api/ansys/tools/versioning/exceptions/index",
+        "href": "api/ansys/tools/versioning/exceptions/index.html#description",
+        "title": "The exceptions.py module > Description",
+        "section": "Description",
+        "text": "A module containing custom exceptions.\nDescription"
+    },
+    {
+        "objectID": "api/index",
+        "href": "api/index.html#api-reference",
+        "title": "API reference",
+        "section": "API reference",
+        "text": "This section describes pyansys-tools-versioning endpoints, their capabilities, and how\nto interact with them programmatically.\nAPI reference"
+    },
+    {
+        "objectID": "api/ansys/tools/versioning/utils/VersionNumber",
+        "href": "api/ansys/tools/versioning/utils/VersionNumber.html#versionnumber",
+        "title": "VersionNumber",
+        "section": "VersionNumber",
+        "text": "Class for version comparison.\nThis class can be instantiated from a string or an integer.\nThe constructor will choose the corresponding class.\nAny combination of ‘dev’ and integers will be considered as a string.\n‘dev’ is considered as the highest version number possible.\nVersionNumber\nVersionNumber"
+    },
+    {
+        "objectID": "api/ansys/tools/versioning/utils/VersionNumber",
+        "href": "api/ansys/tools/versioning/utils/VersionNumber.html#ansys.tools.versioning.utils.VersionNumber",
+        "title": "VersionNumber > VersionNumber > VersionNumber",
+        "section": "VersionNumber > VersionNumber",
+        "text": "class ansys.tools.versioning.utils.VersionNumber\n\nClass for version comparison.\n\nThis class can be instantiated from a string or an integer.\nThe constructor will choose the corresponding class.\n\nAny combination of ‘dev’ and integers will be considered as a string.\n‘dev’ is considered as the highest version number possible.\n\nExamples\n\n>>> from ansys.tools.versioning.utils import VersionNumber\n>>> VersionNumber(1)\n1\n>>> VersionNumber(\"dev\")\n'dev'\n>>> VersionNumber(1) <= VersionNumber(\"dev\")\nTrue\n>>> VersionNumber(99999) >= VersionNumber(\"dev\")\nFalse\n>>> VersionNumber(\"dev\") == VersionNumber(\"dev1\")\nFalse\n>>> VersionNumber(\"dev\") != VersionNumber(\"dev1\")\nTrue\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/tools/versioning/utils/VersionNumber",
+        "href": "api/ansys/tools/versioning/utils/VersionNumber.html#import-detail",
+        "title": "VersionNumber > Import detail",
+        "section": "Import detail",
+        "text": "Import detail"
+    },
+    {
+        "objectID": "api/ansys/tools/versioning/utils/myint",
+        "href": "api/ansys/tools/versioning/utils/myint.html#myint",
+        "title": "myint",
+        "section": "myint",
+        "text": "Bases: VersionMeta, int\nCustom class to hold integers for versioning.\nmyint\nmyint\nVersionMeta\nint"
+    },
+    {
+        "objectID": "api/ansys/tools/versioning/utils/myint",
+        "href": "api/ansys/tools/versioning/utils/myint.html#ansys.tools.versioning.utils.myint",
+        "title": "myint > myint > myint",
+        "section": "myint > myint",
+        "text": "class ansys.tools.versioning.utils.myint\n\nBases: VersionMeta, int\n\nCustom class to hold integers for versioning.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/tools/versioning/utils/myint",
+        "href": "api/ansys/tools/versioning/utils/myint.html#import-detail",
+        "title": "myint > Import detail",
+        "section": "Import detail",
+        "text": "Import detail"
+    },
+    {
+        "objectID": "index",
+        "href": "index.html#pyansys-tools-versioning",
+        "title": "PyAnsys Tools Versioning",
+        "section": "PyAnsys Tools Versioning",
+        "text": "PyAnsys Python PyPI GH-CI Codecov MIT Black pre-commit.ci status\nUtilities for backwards and forwards server support.\nPyAnsys Tools Versioning"
+    },
+    {
+        "objectID": "index",
+        "href": "index.html#how-to-install",
+        "title": "PyAnsys Tools Versioning > How to install",
+        "section": "How to install",
+        "text": "At least two installation modes are provided: user and developer.\nHow to install"
+    },
+    {
+        "objectID": "index",
+        "href": "index.html#for-users",
+        "title": "PyAnsys Tools Versioning > For users",
+        "section": "For users",
+        "text": "In order to install PyAnsys Tools Versioning, make sure you\nhave the latest version of pip. To do so, run:\nThen, you can simply execute:\nFor users"
+    },
+    {
+        "objectID": "index",
+        "href": "index.html#for-developers",
+        "title": "PyAnsys Tools Versioning > For developers",
+        "section": "For developers",
+        "text": "Installing PyAnsys Tools Versioning in developer mode allows\nyou to modify the source and enhance it.\nBefore contributing to the project, please refer to the PyAnsys Developer’s guide. You will\nneed to follow these steps:\nStart by cloning this repository:\nCreate a fresh-clean Python environment and activate it:\nMake sure you have the latest required build system and doc, testing, and CI tools:\nInstall the project in editable mode:\nFinally, verify your development installation by running:\nFor developers"
+    },
+    {
+        "objectID": "index",
+        "href": "index.html#how-to-testing",
+        "title": "PyAnsys Tools Versioning > How to testing",
+        "section": "How to testing",
+        "text": "This project takes advantage of tox. This tool allows to automate common\ndevelopment tasks (similar to Makefile) but it is oriented towards Python\ndevelopment.\nHow to testing"
+    },
+    {
+        "objectID": "index",
+        "href": "index.html#using-tox",
+        "title": "PyAnsys Tools Versioning > Using tox",
+        "section": "Using tox",
+        "text": "As Makefile has rules, tox has environments. In fact, the tool creates its\nown virtual environment so anything being tested is isolated from the project in\norder to guarantee project’s integrity. The following environments commands are provided:\ntox -e style: will check for coding style quality.\ntox -e py: checks for unit tests.\ntox -e py-coverage: checks for unit testing and code coverage.\ntox -e doc: checks for documentation building process.\nUsing tox"
+    },
+    {
+        "objectID": "index",
+        "href": "index.html#raw-testing",
+        "title": "PyAnsys Tools Versioning > Raw testing",
+        "section": "Raw testing",
+        "text": "If required, you can always call the style commands (black, isort,\nflake8…) or unit testing ones (pytest) from the command line. However,\nthis does not guarantee that your project is being tested in an isolated\nenvironment, which is the reason why tools like tox exist.\nRaw testing"
+    },
+    {
+        "objectID": "index",
+        "href": "index.html#a-note-on-pre-commit",
+        "title": "PyAnsys Tools Versioning > A note on pre-commit",
+        "section": "A note on pre-commit",
+        "text": "The style checks take advantage of pre-commit. Developers are not forced but\nencouraged to install this tool via:\nA note on pre-commit"
+    },
+    {
+        "objectID": "index",
+        "href": "index.html#documentation",
+        "title": "PyAnsys Tools Versioning > Documentation",
+        "section": "Documentation",
+        "text": "For building documentation, you can either run the usual rules provided in the\nSphinx Makefile, such us:\nHowever, the recommended way of checking documentation integrity is using:\nDocumentation"
+    },
+    {
+        "objectID": "index",
+        "href": "index.html#distributing",
+        "title": "PyAnsys Tools Versioning > Distributing",
+        "section": "Distributing",
+        "text": "If you would like to create either source or wheel files, start by installing\nthe building requirements and then executing the build module:\nDistributing"
+    },
+    {
+        "objectID": "getting_started",
+        "href": "getting_started.html#getting-started",
+        "title": "Getting started",
+        "section": "Getting started",
+        "text": "Getting started"
+    },
+    {
+        "objectID": "getting_started",
+        "href": "getting_started.html#installation",
+        "title": "Getting started > Installation",
+        "section": "Installation",
+        "text": "This package may be installed following two procedures: either the pip package\nmanager installation or the manual installation. The process to be followed for\neach of them is shown in the upcoming sections.\nThe pyansys-tools-versioning package currently supports Python >=3.10 on\nWindows, macOS, and Linux.\nInstall the latest release from PyPi with:\nAlternatively, install the latest from GitHub via:\nFor a local development version, install with (requires pip >= 22.0):\nInstallation\npyansys-tools-versioning"
+    },
+    {
+        "objectID": "getting_started",
+        "href": "getting_started.html#offline-installation",
+        "title": "Getting started > Offline installation",
+        "section": "Offline installation",
+        "text": "If you lack an internet connection in your local machine, the recommended way of\ninstalling pyansys-tools-versioning is downloading the wheelhouse archive\nfrom the Releases Page for your corresponding machine architecture.\nEach wheelhouse archive contains all the python wheels necessary to install\nPyAnsys Tools Report from scratch on Windows and Linux for Python >=3.10. You can\ninstall this on an isolated system with a fresh python or on a virtual\nenvironment.\nFor example, on Linux with Python 3.10, unzip it and install it with the\nfollowing:\nIf you are on Windows with Python 3.10, unzip to a wheelhouse directory and\ninstall using the same command as before.\nConsider installing using a virtual environment. More information on general\nPyAnsys development can be found in the PyAnsys Developer’s Guide.\nOffline installation\npyansys-tools-versioning"
+    },
+    {
+        "objectID": "api/ansys/tools/versioning/utils/index",
+        "href": "api/ansys/tools/versioning/utils/index.html#the-utilspy-module",
+        "title": "The utils.py module",
+        "section": "The utils.py module",
+        "text": "The utils.py module\nutils.py"
+    },
+    {
+        "objectID": "api/ansys/tools/versioning/utils/index",
+        "href": "api/ansys/tools/versioning/utils/index.html#summary",
+        "title": "The utils.py module > Summary",
+        "section": "Summary",
+        "text": "VersionMeta\nMetaclass for version comparison.\nSemanticVersion\nClass for semantic versioning.\nmystr\nCustom class to hold strings for versioning.\nmyint\nCustom class to hold integers for versioning.\nVersionNumber\nClass for version comparison.\nsanitize_version_string\nSanitize a version string number by adding additional zeros.\nsanitize_version_tuple\nSanitize a version number by adding additional zeros.\nversion_string_as_tuple\nConvert a semantic version string into a tuple.\nversion_tuple_as_string\nConvert a semantic version tuple into a string.\nserver_meets_version\nCheck if server meets the required version.\nrequires_version\nEnsure the method called matches a certain version.\nvalid_version_string\nCheck if version string is valid.\nvalid_semantic_version\nCheck if a semantic version is valid.\nSummary\nVersionMeta\nSemanticVersion\nmystr\nmyint\nVersionNumber\nsanitize_version_string\nsanitize_version_tuple\nversion_string_as_tuple\nversion_tuple_as_string\nserver_meets_version\nrequires_version\nvalid_version_string\nvalid_semantic_version"
+    },
+    {
+        "objectID": "api/ansys/tools/versioning/utils/index",
+        "href": "api/ansys/tools/versioning/utils/index.html#description",
+        "title": "The utils.py module > Description",
+        "section": "Description",
+        "text": "A module containing various utilities.\nDescription"
+    },
+    {
+        "objectID": "api/ansys/tools/versioning/utils/index",
+        "href": "api/ansys/tools/versioning/utils/index.html#module-detail",
+        "title": "The utils.py module > Module detail",
+        "section": "Module detail",
+        "text": "Sanitize a version string number by adding additional zeros.\nA string representing a semantic version.\nA string representing a semantic version.\nSanitize a version number by adding additional zeros.\nA tuple representing a semantic version.\nA tuple representing a semantic version.\nConvert a semantic version string into a tuple.\nA string representing a semantic version.\nA tuple representing a semantic version.\nConvert a semantic version tuple into a string.\nA tuple representing a semantic version.\nA string representing a semantic version.\nCheck if server meets the required version.\nA string or tuple representing the server version.\nIf it is an object different from the previous ones, it must have a ‘_server_version’ attribute.\nA string or tuple representing the version to be meet.\nTrue if server version meets required version, False if not.\nIf the ‘server_version’ object does not have ‘_server_version’ attribute.\nEnsure the method called matches a certain version.\nA string or tuple representing the minimum required version.\nA dictionary relating server version and ANSYS unified install version.\nDecorated class method requires _server_version attribute.\nDecorated class method is not supported by server version.\nCheck if version string is valid.\nCheck if a semantic version is valid.\nModule detail\npython:str\npython:str\npython:tuple\npython:tuple\npython:str\npython:tuple\npython:tuple\npython:str\npython:str\npython:tuple\nobj\npython:str\npython:tuple\nTrue\nFalse\nValueError\npython:str\npython:tuple\npython:dict\noptional\nAttributeError\n_server_version\nVersionError"
+    },
+    {
+        "objectID": "api/ansys/tools/versioning/utils/index",
+        "href": "api/ansys/tools/versioning/utils/index.html#utils.sanitize_version_string",
+        "title": "The utils.py module > Module detail > sanitize_version_string",
+        "section": "Module detail > sanitize_version_string",
+        "text": "utils.sanitize_version_string(version_string)\n\nSanitize a version string number by adding additional zeros.\n\nParameters\n\nversion_string\n\npython:str\n\nA string representing a semantic version.\n\nReturns\n\npython:str\n\nA string representing a semantic version.\n\nExamples\n\n>>> sanitize_version_string(\"0\")\n'0.0.0'\n>>> sanitize_version_string(\"1.2\")\n'1.2.0'\n>>> sanitize_version_string(\"0.3.4\")\n'0.3.4'\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/tools/versioning/utils/index",
+        "href": "api/ansys/tools/versioning/utils/index.html#utils.sanitize_version_tuple",
+        "title": "The utils.py module > Module detail > sanitize_version_tuple",
+        "section": "Module detail > sanitize_version_tuple",
+        "text": "utils.sanitize_version_tuple(version_tuple)\n\nSanitize a version number by adding additional zeros.\n\nParameters\n\nversion_tuple\n\npython:tuple\n\nA tuple representing a semantic version.\n\nReturns\n\npython:tuple\n\nA tuple representing a semantic version.\n\nExamples\n\n>>> sanitize_version_tuple((0,))\n(0, 0, 0)\n>>> sanitize_version_tuple((1, 2))\n(1, 2, 0)\n>>> sanitize_version_tuple((0, 3, 4))\n(0, 3, 4)\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/tools/versioning/utils/index",
+        "href": "api/ansys/tools/versioning/utils/index.html#utils.version_string_as_tuple",
+        "title": "The utils.py module > Module detail > version_string_as_tuple",
+        "section": "Module detail > version_string_as_tuple",
+        "text": "utils.version_string_as_tuple(version_string)\n\nConvert a semantic version string into a tuple.\n\nParameters\n\nversion_string\n\npython:str\n\nA string representing a semantic version.\n\nReturns\n\nversion_tuple\n\npython:tuple\n\nA tuple representing a semantic version.\n\nExamples\n\n>>> version_string_as_tuple(\"0.3.4\")\n(0, 3, 4)\n>>> version_string_as_tuple(\"1.2\")\n(1, 2, 0)\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/tools/versioning/utils/index",
+        "href": "api/ansys/tools/versioning/utils/index.html#utils.version_tuple_as_string",
+        "title": "The utils.py module > Module detail > version_tuple_as_string",
+        "section": "Module detail > version_tuple_as_string",
+        "text": "utils.version_tuple_as_string(version_tuple)\n\nConvert a semantic version tuple into a string.\n\nParameters\n\nversion_tuple\n\npython:tuple\n\nA tuple representing a semantic version.\n\nReturns\n\npython:str\n\nA string representing a semantic version.\n\nExamples\n\n>>> version_tuple_as_string((0, 3, 4))\n'0.3.4'\n>>> version_tuple_as_string((1, 2))\n'1.2.0'\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/tools/versioning/utils/index",
+        "href": "api/ansys/tools/versioning/utils/index.html#utils.server_meets_version",
+        "title": "The utils.py module > Module detail > server_meets_version",
+        "section": "Module detail > server_meets_version",
+        "text": "utils.server_meets_version(server_version, required_version)\n\nCheck if server meets the required version.\n\nParameters\n\nserver_version\n\npython:str, python:tuple, obj\n\nA string or tuple representing the server version.\nIf it is an object different from the previous ones, it must have a ‘_server_version’ attribute.\n\nrequired_version\n\npython:str, python:tuple\n\nA string or tuple representing the version to be meet.\n\nReturns\n\nbool\n\nTrue if server version meets required version, False if not.\n\nRaises\n\nValueError\n\nIf the ‘server_version’ object does not have ‘_server_version’ attribute.\n\nExamples\n\n>>> server_version, required_version = \"1.2.0\", \"1.3.0\"\n>>> server_meets_version(server_version, required_version)\nFalse\n>>> server_version, required_version = (1, 2, 0), (1, 3, 0)\n>>> server_meets_version(server_version, required_version)\nFalse\n>>> server_version, required_version = \"2.3.0\", \"1.3.0\"\n>>> server_meets_version(server_version, required_version)\nTrue\n>>> server_version, required_version = (2, 3, 0), (1, 3, 0)\n>>> server_meets_version(server_version, required_version)\nTrue\n>>> server_version, required_version = (0, 0, 0), (0, 0, 0)\n>>> server_meets_version(server_version, required_version)\nTrue\n>>> class MyServer:\n        def __init__(self):\n            self._server_version = \"1.2.0\"\n>>> server = MyServer()\n>>> server_version, required_version = server, \"1.3.0\"\n>>> server_meets_version(server, required_version)\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/tools/versioning/utils/index",
+        "href": "api/ansys/tools/versioning/utils/index.html#utils.requires_version",
+        "title": "The utils.py module > Module detail > requires_version",
+        "section": "Module detail > requires_version",
+        "text": "utils.requires_version(version, VERSION_MAP=None)\n\nEnsure the method called matches a certain version.\n\nParameters\n\nversion\n\npython:str, python:tuple\n\nA string or tuple representing the minimum required version.\n\nVERSION_MAP\n\npython:dict, optional\n\nA dictionary relating server version and ANSYS unified install version.\n\nRaises\n\nAttributeError\n\nDecorated class method requires _server_version attribute.\n\nVersionError\n\nDecorated class method is not supported by server version.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/tools/versioning/utils/index",
+        "href": "api/ansys/tools/versioning/utils/index.html#utils.valid_version_string",
+        "title": "The utils.py module > Module detail > valid_version_string",
+        "section": "Module detail > valid_version_string",
+        "text": "utils.valid_version_string(version)\n\nCheck if version string is valid.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/tools/versioning/utils/index",
+        "href": "api/ansys/tools/versioning/utils/index.html#utils.valid_semantic_version",
+        "title": "The utils.py module > Module detail > valid_semantic_version",
+        "section": "Module detail > valid_semantic_version",
+        "text": "utils.valid_semantic_version(iterable)\n\nCheck if a semantic version is valid.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/tools/versioning/exceptions/VersionSyntaxError",
+        "href": "api/ansys/tools/versioning/exceptions/VersionSyntaxError.html#versionsyntaxerror",
+        "title": "VersionSyntaxError",
+        "section": "VersionSyntaxError",
+        "text": "Bases: Exception\nAn exception to be raised when an invalid version syntax is found.\nVersionSyntaxError\nVersionSyntaxError\nException"
+    },
+    {
+        "objectID": "api/ansys/tools/versioning/exceptions/VersionSyntaxError",
+        "href": "api/ansys/tools/versioning/exceptions/VersionSyntaxError.html#ansys.tools.versioning.exceptions.VersionSyntaxError",
+        "title": "VersionSyntaxError > VersionSyntaxError > VersionSyntaxError",
+        "section": "VersionSyntaxError > VersionSyntaxError",
+        "text": "exception ansys.tools.versioning.exceptions.VersionSyntaxError(msg)\n\nBases: Exception\n\nAn exception to be raised when an invalid version syntax is found.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/tools/versioning/exceptions/VersionSyntaxError",
+        "href": "api/ansys/tools/versioning/exceptions/VersionSyntaxError.html#import-detail",
+        "title": "VersionSyntaxError > Import detail",
+        "section": "Import detail",
+        "text": "Import detail"
+    },
+    {
+        "objectID": "api/ansys/tools/versioning/utils/VersionMeta",
+        "href": "api/ansys/tools/versioning/utils/VersionMeta.html#versionmeta",
+        "title": "VersionMeta",
+        "section": "VersionMeta",
+        "text": "Metaclass for version comparison.\nImplements modification to magic methods.\nVersionMeta\nVersionMeta"
+    },
+    {
+        "objectID": "api/ansys/tools/versioning/utils/VersionMeta",
+        "href": "api/ansys/tools/versioning/utils/VersionMeta.html#ansys.tools.versioning.utils.VersionMeta",
+        "title": "VersionMeta > VersionMeta > VersionMeta",
+        "section": "VersionMeta > VersionMeta",
+        "text": "class ansys.tools.versioning.utils.VersionMeta\n\nMetaclass for version comparison.\n\nImplements modification to magic methods.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/tools/versioning/utils/VersionMeta",
+        "href": "api/ansys/tools/versioning/utils/VersionMeta.html#overview",
+        "title": "VersionMeta > Overview",
+        "section": "Overview",
+        "text": "__le__\nLess equal.\n__lt__\nLess than.\n__ge__\nGreater equal.\n__gt__\nGreater than.\n__eq__\nEqual method.\n__ne__\nNot equal.\n__hash__\nCall the underlying __hash__ method.\nOverview\n__le__\n__lt__\n__ge__\n__gt__\n__eq__\n__ne__\n__hash__"
+    },
+    {
+        "objectID": "api/ansys/tools/versioning/utils/VersionMeta",
+        "href": "api/ansys/tools/versioning/utils/VersionMeta.html#import-detail",
+        "title": "VersionMeta > Import detail",
+        "section": "Import detail",
+        "text": "Import detail"
+    },
+    {
+        "objectID": "api/ansys/tools/versioning/utils/VersionMeta",
+        "href": "api/ansys/tools/versioning/utils/VersionMeta.html#method-detail",
+        "title": "VersionMeta > Method detail",
+        "section": "Method detail",
+        "text": "Less equal.\nIf compared against a string which contains ‘dev’ it will always evaluate to True.\nIf compared against an int, it will perform a classic ‘less equal’ operation.\nLess than.\nIf compared against a string which contains ‘dev’ it will always evaluate to True.\nIf compared against an int, it will perform a classic ‘less than’ operation.\nGreater equal.\nIf compared against a string which contains ‘dev’ it will always evaluate to False.\nIf compared against an int, it will perform a classic ‘greater equal’ operation.\nGreater than.\nIf compared against a string which contains ‘dev’ it will always evaluate to False.\nIf compared against an int, it will perform a classic ‘greater than’ operation.\nEqual method.\nIf compared against a string which contains ‘dev’ it will always evaluate to False.\nIf compared against an int, it will perform a classic ‘equal’ operation.\nNot equal.\nIf compared against a string which contains ‘dev’ it will always evaluate to not\n‘equal’ operation (True). If compared against an int, it will perform a classic ‘not equal’ operation.\nCall the underlying __hash__ method.\nMethod detail"
+    },
+    {
+        "objectID": "api/ansys/tools/versioning/utils/VersionMeta",
+        "href": "api/ansys/tools/versioning/utils/VersionMeta.html#VersionMeta.__le__",
+        "title": "VersionMeta > Method detail > __le__",
+        "section": "Method detail > __le__",
+        "text": "VersionMeta.__le__(__x: str | int) -> bool\n\nLess equal.\n\nIf compared against a string which contains ‘dev’ it will always evaluate to True.\nIf compared against an int, it will perform a classic ‘less equal’ operation.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/tools/versioning/utils/VersionMeta",
+        "href": "api/ansys/tools/versioning/utils/VersionMeta.html#VersionMeta.__lt__",
+        "title": "VersionMeta > Method detail > __lt__",
+        "section": "Method detail > __lt__",
+        "text": "VersionMeta.__lt__(__x: str | int) -> bool\n\nLess than.\n\nIf compared against a string which contains ‘dev’ it will always evaluate to True.\nIf compared against an int, it will perform a classic ‘less than’ operation.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/tools/versioning/utils/VersionMeta",
+        "href": "api/ansys/tools/versioning/utils/VersionMeta.html#VersionMeta.__ge__",
+        "title": "VersionMeta > Method detail > __ge__",
+        "section": "Method detail > __ge__",
+        "text": "VersionMeta.__ge__(__x: str | int) -> bool\n\nGreater equal.\n\nIf compared against a string which contains ‘dev’ it will always evaluate to False.\nIf compared against an int, it will perform a classic ‘greater equal’ operation.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/tools/versioning/utils/VersionMeta",
+        "href": "api/ansys/tools/versioning/utils/VersionMeta.html#VersionMeta.__gt__",
+        "title": "VersionMeta > Method detail > __gt__",
+        "section": "Method detail > __gt__",
+        "text": "VersionMeta.__gt__(__x: str | int) -> bool\n\nGreater than.\n\nIf compared against a string which contains ‘dev’ it will always evaluate to False.\nIf compared against an int, it will perform a classic ‘greater than’ operation.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/tools/versioning/utils/VersionMeta",
+        "href": "api/ansys/tools/versioning/utils/VersionMeta.html#VersionMeta.__eq__",
+        "title": "VersionMeta > Method detail > __eq__",
+        "section": "Method detail > __eq__",
+        "text": "VersionMeta.__eq__(__x: object) -> bool\n\nEqual method.\n\nIf compared against a string which contains ‘dev’ it will always evaluate to False.\nIf compared against an int, it will perform a classic ‘equal’ operation.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/tools/versioning/utils/VersionMeta",
+        "href": "api/ansys/tools/versioning/utils/VersionMeta.html#VersionMeta.__ne__",
+        "title": "VersionMeta > Method detail > __ne__",
+        "section": "Method detail > __ne__",
+        "text": "VersionMeta.__ne__(__x: object) -> bool\n\nNot equal.\n\nIf compared against a string which contains ‘dev’ it will always evaluate to not\n‘equal’ operation (True). If compared against an int, it will perform a classic ‘not equal’ operation.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/tools/versioning/utils/VersionMeta",
+        "href": "api/ansys/tools/versioning/utils/VersionMeta.html#VersionMeta.__hash__",
+        "title": "VersionMeta > Method detail > __hash__",
+        "section": "Method detail > __hash__",
+        "text": "VersionMeta.__hash__() -> int\n\nCall the underlying __hash__ method.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "user_guide",
+        "href": "user_guide.html#user-guide",
+        "title": "User guide",
+        "section": "User guide",
+        "text": "The fundamental object provided by ansys.tools.versioning is a decorator\nnamed ansys.tools.versioning.utils.requires_version() which accepts:\nThe required version as a string \"<Major>.<Minor>.<Patch>\" or tuple\n(<Major>, <Minor>, <Patch>).\nA version map in the form of dictionary relating the required version and its\nAnsys unified install, VERSION_MAP = {(<Major>, <Minor>, <Patch>): \"2022R1\"}\nUser guide\nansys.tools.versioning\nansys.tools.versioning.utils.requires_version()\n\"<Major>.<Minor>.<Patch>\"\n(<Major>, <Minor>, <Patch>)\nVERSION_MAP = {(<Major>, <Minor>, <Patch>): \"2022R1\"}"
+    },
+    {
+        "objectID": "user_guide",
+        "href": "user_guide.html#how-to-use",
+        "title": "User guide > How to use",
+        "section": "How to use",
+        "text": "The requires_version decorator is expected to be used in all the desired\nmethods of a class containing a _server_version attribute. If the class in\nwhich it is used does not contain this attribute, an AttributeError is\nraised.\nAs an example, consider the following code declaring a generic Server class\nand a VERSION_MAP dictionary\nSuppose that two servers are created using previous class. Each of the servers\nis using a different version, meaning that some of the methods are available\nwhile some others are not:\nExecuting each one of the methods it is possible to see that both instances can\nexecute the old_method function:\nHowever, when trying to run new_method, the old server raises a\nVersionError exception, indicating that a higher server version is required:\nHow to use\nrequires_version\n_server_version\nAttributeError\nServer\nVERSION_MAP\nold_method\nnew_method\nVersionError"
+    },
+    {
+        "objectID": "api/ansys/tools/versioning/index",
+        "href": "api/ansys/tools/versioning/index.html#the-ansystoolsversioning-library",
+        "title": "The ansys.tools.versioning library",
+        "section": "The ansys.tools.versioning library",
+        "text": "The ansys.tools.versioning library\nansys.tools.versioning"
+    },
+    {
+        "objectID": "api/ansys/tools/versioning/index",
+        "href": "api/ansys/tools/versioning/index.html#summary",
+        "title": "The ansys.tools.versioning library > Summary",
+        "section": "Summary",
+        "text": "exceptions\nA module containing custom exceptions.\nutils\nA module containing various utilities.\nrequires_version\nEnsure the method called matches a certain version.\nserver_meets_version\nCheck if server meets the required version.\nSummary\nexceptions\nutils\nrequires_version\nserver_meets_version"
+    },
+    {
+        "objectID": "api/ansys/tools/versioning/index",
+        "href": "api/ansys/tools/versioning/index.html#description",
+        "title": "The ansys.tools.versioning library > Description",
+        "section": "Description",
+        "text": "PyAnsys Tools Versioning.\nUtilities for backwards and forwards server support.\nDescription"
+    },
+    {
+        "objectID": "api/ansys/tools/versioning/index",
+        "href": "api/ansys/tools/versioning/index.html#module-detail",
+        "title": "The ansys.tools.versioning library > Module detail",
+        "section": "Module detail",
+        "text": "Module detail"
+    },
+    {
+        "objectID": "api/ansys/tools/versioning/utils/SemanticVersion",
+        "href": "api/ansys/tools/versioning/utils/SemanticVersion.html#semanticversion",
+        "title": "SemanticVersion",
+        "section": "SemanticVersion",
+        "text": "Bases: tuple\nClass for semantic versioning.\nIt is a subclass of tuple and can be instantiated from a string or a tuple.\nYou can use ‘dev’ in the patch version, but nowhere else.\nSemanticVersion\nSemanticVersion\ntuple"
+    },
+    {
+        "objectID": "api/ansys/tools/versioning/utils/SemanticVersion",
+        "href": "api/ansys/tools/versioning/utils/SemanticVersion.html#ansys.tools.versioning.utils.SemanticVersion",
+        "title": "SemanticVersion > SemanticVersion > SemanticVersion",
+        "section": "SemanticVersion > SemanticVersion",
+        "text": "class ansys.tools.versioning.utils.SemanticVersion\n\nBases: tuple\n\nClass for semantic versioning.\n\nIt is a subclass of tuple and can be instantiated from a string or a tuple.\n\nYou can use ‘dev’ in the patch version, but nowhere else.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/tools/versioning/utils/SemanticVersion",
+        "href": "api/ansys/tools/versioning/utils/SemanticVersion.html#overview",
+        "title": "SemanticVersion > Overview",
+        "section": "Overview",
+        "text": "as_string\nReturn the version as string.\nas_tuple\nReturn the version as tuple.\nas_list\nReturn the version as list.\nas_dict\nReturn the version as dict.\nmajor\nReturn major version number.\nminor\nReturn minor version number.\npatch\nReturn patch version number.\nOverview\nas_string\nas_tuple\nas_list\nas_dict\nmajor\nminor\npatch"
+    },
+    {
+        "objectID": "api/ansys/tools/versioning/utils/SemanticVersion",
+        "href": "api/ansys/tools/versioning/utils/SemanticVersion.html#import-detail",
+        "title": "SemanticVersion > Import detail",
+        "section": "Import detail",
+        "text": "Import detail"
+    },
+    {
+        "objectID": "api/ansys/tools/versioning/utils/SemanticVersion",
+        "href": "api/ansys/tools/versioning/utils/SemanticVersion.html#property-detail",
+        "title": "SemanticVersion > Property detail",
+        "section": "Property detail",
+        "text": "Return major version number.\nReturn minor version number.\nReturn patch version number.\nProperty detail"
+    },
+    {
+        "objectID": "api/ansys/tools/versioning/utils/SemanticVersion",
+        "href": "api/ansys/tools/versioning/utils/SemanticVersion.html#SemanticVersion.major",
+        "title": "SemanticVersion > Property detail > major",
+        "section": "Property detail > major",
+        "text": "property SemanticVersion.major\n\nReturn major version number.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/tools/versioning/utils/SemanticVersion",
+        "href": "api/ansys/tools/versioning/utils/SemanticVersion.html#SemanticVersion.minor",
+        "title": "SemanticVersion > Property detail > minor",
+        "section": "Property detail > minor",
+        "text": "property SemanticVersion.minor\n\nReturn minor version number.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/tools/versioning/utils/SemanticVersion",
+        "href": "api/ansys/tools/versioning/utils/SemanticVersion.html#SemanticVersion.patch",
+        "title": "SemanticVersion > Property detail > patch",
+        "section": "Property detail > patch",
+        "text": "property SemanticVersion.patch\n\nReturn patch version number.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/tools/versioning/utils/SemanticVersion",
+        "href": "api/ansys/tools/versioning/utils/SemanticVersion.html#method-detail",
+        "title": "SemanticVersion > Method detail",
+        "section": "Method detail",
+        "text": "Return the version as string.\nReturn the version as tuple.\nReturn the version as list.\nReturn the version as dict.\nMethod detail"
+    },
+    {
+        "objectID": "api/ansys/tools/versioning/utils/SemanticVersion",
+        "href": "api/ansys/tools/versioning/utils/SemanticVersion.html#SemanticVersion.as_string",
+        "title": "SemanticVersion > Method detail > as_string",
+        "section": "Method detail > as_string",
+        "text": "SemanticVersion.as_string()\n\nReturn the version as string.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/tools/versioning/utils/SemanticVersion",
+        "href": "api/ansys/tools/versioning/utils/SemanticVersion.html#SemanticVersion.as_tuple",
+        "title": "SemanticVersion > Method detail > as_tuple",
+        "section": "Method detail > as_tuple",
+        "text": "SemanticVersion.as_tuple()\n\nReturn the version as tuple.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/tools/versioning/utils/SemanticVersion",
+        "href": "api/ansys/tools/versioning/utils/SemanticVersion.html#SemanticVersion.as_list",
+        "title": "SemanticVersion > Method detail > as_list",
+        "section": "Method detail > as_list",
+        "text": "SemanticVersion.as_list()\n\nReturn the version as list.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/tools/versioning/utils/SemanticVersion",
+        "href": "api/ansys/tools/versioning/utils/SemanticVersion.html#SemanticVersion.as_dict",
+        "title": "SemanticVersion > Method detail > as_dict",
+        "section": "Method detail > as_dict",
+        "text": "SemanticVersion.as_dict()\n\nReturn the version as dict.\n\n!! processed by numpydoc !!"
+    }
+]
