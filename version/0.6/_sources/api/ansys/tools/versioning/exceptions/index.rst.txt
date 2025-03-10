@@ -1,0 +1,83 @@
+
+
+
+
+
+
+The ``exceptions.py`` module
+============================
+
+.. py:module:: ansys.tools.versioning.exceptions
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+.. py:currentmodule:: exceptions
+.. tab-set::
+
+
+
+
+
+
+    .. tab-item:: Exceptions
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.tools.versioning.exceptions.VersionSyntaxError`
+            - An exception to be raised when an invalid version syntax is found.
+
+
+          * - :py:obj:`~ansys.tools.versioning.exceptions.VersionError`
+            - An exception to be raised when a version is not valid.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-md-lightning_bolt"></span> VersionSyntaxError</api/ansys/tools/versioning/exceptions/VersionSyntaxError>
+    <span class="nf nf-md-lightning_bolt"></span> VersionError</api/ansys/tools/versioning/exceptions/VersionError>
+
+
+
+
+
+
+
+Description
+-----------
+
+A module containing custom exceptions.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+
