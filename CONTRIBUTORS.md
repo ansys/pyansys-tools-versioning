@@ -6,5 +6,5 @@
 
 ## Individual Contributors
 
+* [German](https://github.com/germa89)
 * [Jorge Martínez](https://github.com/jorgepiloto)
-* [German Martinez Ayuso](https://github.com/germa89)
