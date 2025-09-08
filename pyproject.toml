@@ -30,7 +30,7 @@ dependencies = []
 [project.optional-dependencies]
 tests = [
     "hypothesis==6.138.11",
-    "pytest==8.4.1",
+    "pytest==8.4.2",
     "pytest-cov==6.3.0",
 ]
 doc = [
