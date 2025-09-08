@@ -31,7 +31,7 @@ dependencies = []
 tests = [
     "hypothesis==6.138.11",
     "pytest==8.4.1",
-    "pytest-cov==6.2.1",
+    "pytest-cov==6.3.0",
 ]
 doc = [
     "ansys_sphinx_theme[autoapi]==1.6.0",
