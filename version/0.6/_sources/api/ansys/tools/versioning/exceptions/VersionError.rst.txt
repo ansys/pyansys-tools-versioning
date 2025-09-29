@@ -1,0 +1,45 @@
+
+
+:class:`VersionError`
+=====================
+
+.. py:exception:: ansys.tools.versioning.exceptions.VersionError(msg)
+
+   Bases: :py:obj:`Exception`
+
+
+   
+   An exception to be raised when a version is not valid.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.tools.versioning.exceptions import VersionError
+
+
+
+
+
+
