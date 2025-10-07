@@ -1,0 +1,45 @@
+
+
+:class:`mystr`
+==============
+
+.. py:class:: ansys.tools.versioning.utils.mystr
+
+   Bases: :py:obj:`VersionMeta`, :py:obj:`str`
+
+
+   
+   Custom class to hold strings for versioning.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.tools.versioning.utils import mystr
+
+
+
+
+
+

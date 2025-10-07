@@ -1,0 +1,974 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>ansys.tools.versioning.utils &#8212; pyansys-tools-versioning</title>
+    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/css/ansys_sphinx_theme.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    
+        <link href="../../../../../_static/css/breadcrumbs.css" rel="stylesheet">
+    
+    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../_static/doctools.js"></script>
+    <script src="../../../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../../../_static/clipboard.min.js"></script>
+    <script src="../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../_static/js/table.js"></script>
+    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'autoapi/ansys/tools/versioning/utils/index';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://versioning.tools.docs.pyansys.com/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4';
+        </script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="prev" title="ansys.tools.versioning.exceptions" href="../exceptions/index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <link rel="canonical" href="https://versioning.tools.docs.pyansys.com/version/stable/autoapi/ansys/tools/versioning/utils/index.html" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container"><!-- Debugging: html_theme_options =  -->
+
+  <!-- If there is no MiliSearch enabled, use the PyData search -->
+<form class="bd-search d-flex align-items-center"
+      action="../../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+</div>
+  </div>
+  
+    
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  <div class="navbar-header-items__start">
+    
+      <div class="navbar-item">
+  
+
+<a class="navbar-brand logo" href="../../../../../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../getting_started.html">
+                        Getting started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../user_guide.html">
+                        User guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../../../../index.html">
+                        API reference
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+        </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button type="button" class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle" data-bs-toggle="dropdown">
+      0.4  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div class="version-switcher__menu dropdown-menu list-group-flush py-0">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyansys-tools-versioning" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+  
+
+    
+    <div id="announcement_msg"></div>
+<script>
+  fetch("announcement.html")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error: ${response.status}`);
+      }
+      return response.text();
+    })
+    .then(text => document.getElementById("announcement_msg").innerHTML = text)
+    .catch((error) => console.error(`Fetch problem: ${error.message}`));
+</script>
+    
+
+    
+    <div class="container-xl">
+    <div class="row">
+        <div class="col-12 col-md-3" id="breadcrumbs-spacer"></div>
+        <div class="col-12 col-md-11 col-xl-9" id="breadcrumbs">
+          
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+    
+        <li class="nav-item nav-item-additional-breadcrumb"><a href="https://docs.pyansys.com/">PyAnsys</a> » </li>
+    
+    
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">pyansys-tools-versioning</a> » </li>
+    
+
+          <li class="nav-item nav-item-1"><a href="../../../../index.html" >API reference</a> » </li>
+          <li class="nav-item nav-item-2"><a href="../index.html" accesskey="U"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ansys.tools.versioning</span></code></a> » </li>
+        <li class="nav-item nav-item-this"><a href=""><code class="xref py py-mod docutils literal notranslate"><span class="pre">ansys.tools.versioning.utils</span></code></a></li> 
+      </ul>
+    </div>
+        </div>
+  </div>
+</div>
+    
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../getting_started.html">
+                        Getting started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../user_guide.html">
+                        User guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../../../../index.html">
+                        API reference
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button type="button" class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle" data-bs-toggle="dropdown">
+      0.4  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div class="version-switcher__menu dropdown-menu list-group-flush py-0">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyansys-tools-versioning" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ansys.tools.versioning</span></code></a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../exceptions/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ansys.tools.versioning.exceptions</span></code></a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ansys.tools.versioning.utils</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article"></div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="module-ansys.tools.versioning.utils">
+<span id="ansys-tools-versioning-utils"></span><h1><a class="reference internal" href="#module-ansys.tools.versioning.utils" title="ansys.tools.versioning.utils"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ansys.tools.versioning.utils</span></code></a><a class="headerlink" href="#module-ansys.tools.versioning.utils" title="Permalink to this heading">#</a></h1>
+<p>A module containing various utilities.</p>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this heading">#</a></h2>
+<section id="classes">
+<h3>Classes<a class="headerlink" href="#classes" title="Permalink to this heading">#</a></h3>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.tools.versioning.utils.VersionMeta" title="ansys.tools.versioning.utils.VersionMeta"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VersionMeta</span></code></a></p></td>
+<td><p>Metaclass for version comparison.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.tools.versioning.utils.SemanticVersion" title="ansys.tools.versioning.utils.SemanticVersion"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SemanticVersion</span></code></a></p></td>
+<td><p>Class for semantic versioning.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.tools.versioning.utils.mystr" title="ansys.tools.versioning.utils.mystr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mystr</span></code></a></p></td>
+<td><p>Custom class to hold strings for versioning.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.tools.versioning.utils.myint" title="ansys.tools.versioning.utils.myint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">myint</span></code></a></p></td>
+<td><p>Custom class to hold integers for versioning.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.tools.versioning.utils.VersionNumber" title="ansys.tools.versioning.utils.VersionNumber"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VersionNumber</span></code></a></p></td>
+<td><p>Class for version comparison.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">#</a></h3>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.tools.versioning.utils.sanitize_version_string" title="ansys.tools.versioning.utils.sanitize_version_string"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sanitize_version_string</span></code></a>(version_string)</p></td>
+<td><p>Sanitize a version string number by adding additional zeros.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.tools.versioning.utils.sanitize_version_tuple" title="ansys.tools.versioning.utils.sanitize_version_tuple"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sanitize_version_tuple</span></code></a>(version_tuple)</p></td>
+<td><p>Sanitize a version number by adding additional zeros.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.tools.versioning.utils.version_string_as_tuple" title="ansys.tools.versioning.utils.version_string_as_tuple"><code class="xref py py-obj docutils literal notranslate"><span class="pre">version_string_as_tuple</span></code></a>(version_string)</p></td>
+<td><p>Convert a semantic version string into a tuple.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.tools.versioning.utils.version_tuple_as_string" title="ansys.tools.versioning.utils.version_tuple_as_string"><code class="xref py py-obj docutils literal notranslate"><span class="pre">version_tuple_as_string</span></code></a>(version_tuple)</p></td>
+<td><p>Convert a semantic version tuple into a string.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.tools.versioning.utils.server_meets_version" title="ansys.tools.versioning.utils.server_meets_version"><code class="xref py py-obj docutils literal notranslate"><span class="pre">server_meets_version</span></code></a>(server_version, required_version)</p></td>
+<td><p>Check if server meets the required version.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.tools.versioning.utils.requires_version" title="ansys.tools.versioning.utils.requires_version"><code class="xref py py-obj docutils literal notranslate"><span class="pre">requires_version</span></code></a>(version[, VERSION_MAP])</p></td>
+<td><p>Ensure the method called matches a certain version.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.tools.versioning.utils.valid_version_string" title="ansys.tools.versioning.utils.valid_version_string"><code class="xref py py-obj docutils literal notranslate"><span class="pre">valid_version_string</span></code></a>(version)</p></td>
+<td><p>Check if version string is valid.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.tools.versioning.utils.valid_semantic_version" title="ansys.tools.versioning.utils.valid_semantic_version"><code class="xref py py-obj docutils literal notranslate"><span class="pre">valid_semantic_version</span></code></a>(iterable)</p></td>
+<td><p>Check if a semantic version is valid.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py function">
+<dt class="sig sig-object py" id="ansys.tools.versioning.utils.sanitize_version_string">
+<span class="sig-prename descclassname"><span class="pre">ansys.tools.versioning.utils.</span></span><span class="sig-name descname"><span class="pre">sanitize_version_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">version_string</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.tools.versioning.utils.sanitize_version_string" title="Permalink to this definition">#</a></dt>
+<dd><p>Sanitize a version string number by adding additional zeros.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>version_string</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>A string representing a semantic version.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a></dt><dd><p>A string representing a semantic version.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sanitize_version_string</span><span class="p">(</span><span class="s2">&quot;0&quot;</span><span class="p">)</span>
+<span class="go">&#39;0.0.0&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sanitize_version_string</span><span class="p">(</span><span class="s2">&quot;1.2&quot;</span><span class="p">)</span>
+<span class="go">&#39;1.2.0&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sanitize_version_string</span><span class="p">(</span><span class="s2">&quot;0.3.4&quot;</span><span class="p">)</span>
+<span class="go">&#39;0.3.4&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ansys.tools.versioning.utils.sanitize_version_tuple">
+<span class="sig-prename descclassname"><span class="pre">ansys.tools.versioning.utils.</span></span><span class="sig-name descname"><span class="pre">sanitize_version_tuple</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">version_tuple</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.tools.versioning.utils.sanitize_version_tuple" title="Permalink to this definition">#</a></dt>
+<dd><p>Sanitize a version number by adding additional zeros.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>version_tuple</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">tuple</span></code></a></span></dt><dd><p>A tuple representing a semantic version.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">tuple</span></code></a></dt><dd><p>A tuple representing a semantic version.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sanitize_version_tuple</span><span class="p">((</span><span class="mi">0</span><span class="p">,))</span>
+<span class="go">(0, 0, 0)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sanitize_version_tuple</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="go">(1, 2, 0)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sanitize_version_tuple</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="go">(0, 3, 4)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ansys.tools.versioning.utils.version_string_as_tuple">
+<span class="sig-prename descclassname"><span class="pre">ansys.tools.versioning.utils.</span></span><span class="sig-name descname"><span class="pre">version_string_as_tuple</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">version_string</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.tools.versioning.utils.version_string_as_tuple" title="Permalink to this definition">#</a></dt>
+<dd><p>Convert a semantic version string into a tuple.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>version_string</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>A string representing a semantic version.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl>
+<dt><strong>version_tuple</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">tuple</span></code></a></span></dt><dd><p>A tuple representing a semantic version.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">version_string_as_tuple</span><span class="p">(</span><span class="s2">&quot;0.3.4&quot;</span><span class="p">)</span>
+<span class="go">(0, 3, 4)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">version_string_as_tuple</span><span class="p">(</span><span class="s2">&quot;1.2&quot;</span><span class="p">)</span>
+<span class="go">(1, 2, 0)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ansys.tools.versioning.utils.version_tuple_as_string">
+<span class="sig-prename descclassname"><span class="pre">ansys.tools.versioning.utils.</span></span><span class="sig-name descname"><span class="pre">version_tuple_as_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">version_tuple</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.tools.versioning.utils.version_tuple_as_string" title="Permalink to this definition">#</a></dt>
+<dd><p>Convert a semantic version tuple into a string.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>version_tuple</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">tuple</span></code></a></span></dt><dd><p>A tuple representing a semantic version.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a></dt><dd><p>A string representing a semantic version.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">version_tuple_as_string</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="go">&#39;0.3.4&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">version_tuple_as_string</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="go">&#39;1.2.0&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ansys.tools.versioning.utils.server_meets_version">
+<span class="sig-prename descclassname"><span class="pre">ansys.tools.versioning.utils.</span></span><span class="sig-name descname"><span class="pre">server_meets_version</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">server_version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">required_version</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.tools.versioning.utils.server_meets_version" title="Permalink to this definition">#</a></dt>
+<dd><p>Check if server meets the required version.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>server_version</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">tuple</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">obj</span></code></span></dt><dd><p>A string or tuple representing the server version.
+If it is an object different from the previous ones, it must have a ‘_server_version’ attribute.</p>
+</dd>
+<dt><strong>required_version</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">tuple</span></code></a></span></dt><dd><p>A string or tuple representing the version to be meet.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.11)"><span class="xref std std-ref">bool</span></a></dt><dd><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if server version meets required version, <code class="docutils literal notranslate"><span class="pre">False</span></code> if not.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ValueError</span></code></a></dt><dd><p>If the ‘server_version’ object does not have ‘_server_version’ attribute.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">server_version</span><span class="p">,</span> <span class="n">required_version</span> <span class="o">=</span> <span class="s2">&quot;1.2.0&quot;</span><span class="p">,</span> <span class="s2">&quot;1.3.0&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">server_meets_version</span><span class="p">(</span><span class="n">server_version</span><span class="p">,</span> <span class="n">required_version</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">server_version</span><span class="p">,</span> <span class="n">required_version</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">server_meets_version</span><span class="p">(</span><span class="n">server_version</span><span class="p">,</span> <span class="n">required_version</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">server_version</span><span class="p">,</span> <span class="n">required_version</span> <span class="o">=</span> <span class="s2">&quot;2.3.0&quot;</span><span class="p">,</span> <span class="s2">&quot;1.3.0&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">server_meets_version</span><span class="p">(</span><span class="n">server_version</span><span class="p">,</span> <span class="n">required_version</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">server_version</span><span class="p">,</span> <span class="n">required_version</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">server_meets_version</span><span class="p">(</span><span class="n">server_version</span><span class="p">,</span> <span class="n">required_version</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">server_version</span><span class="p">,</span> <span class="n">required_version</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">server_meets_version</span><span class="p">(</span><span class="n">server_version</span><span class="p">,</span> <span class="n">required_version</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">MyServer</span><span class="p">:</span>
+<span class="go">        def __init__(self):</span>
+<span class="go">            self._server_version = &quot;1.2.0&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">server</span> <span class="o">=</span> <span class="n">MyServer</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">server_version</span><span class="p">,</span> <span class="n">required_version</span> <span class="o">=</span> <span class="n">server</span><span class="p">,</span> <span class="s2">&quot;1.3.0&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">server_meets_version</span><span class="p">(</span><span class="n">server</span><span class="p">,</span> <span class="n">required_version</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ansys.tools.versioning.utils.requires_version">
+<span class="sig-prename descclassname"><span class="pre">ansys.tools.versioning.utils.</span></span><span class="sig-name descname"><span class="pre">requires_version</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">VERSION_MAP</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.tools.versioning.utils.requires_version" title="Permalink to this definition">#</a></dt>
+<dd><p>Ensure the method called matches a certain version.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>version</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">tuple</span></code></a></span></dt><dd><p>A string or tuple representing the minimum required version.</p>
+</dd>
+<dt><strong>VERSION_MAP</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">dict</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>A dictionary relating server version and ANSYS unified install version.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#AttributeError" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AttributeError</span></code></a></dt><dd><p>Decorated class method requires <code class="docutils literal notranslate"><span class="pre">_server_version</span></code> attribute.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">VersionError</span></code></dt><dd><p>Decorated class method is not supported by server version.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.tools.versioning.utils.VersionMeta">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.tools.versioning.utils.</span></span><span class="sig-name descname"><span class="pre">VersionMeta</span></span><a class="headerlink" href="#ansys.tools.versioning.utils.VersionMeta" title="Permalink to this definition">#</a></dt>
+<dd><p>Metaclass for version comparison.</p>
+<p>Implements modification to magic methods.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.tools.versioning.utils.VersionMeta.__le__">
+<span class="sig-name descname"><span class="pre">__le__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">__x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#ansys.tools.versioning.utils.VersionMeta.__le__" title="Permalink to this definition">#</a></dt>
+<dd><p>Less equal.</p>
+<p>If compared against a string which contains ‘dev’ it will always evaluate to True.
+If compared against an int, it will perform a classic ‘less equal’ operation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.tools.versioning.utils.VersionMeta.__lt__">
+<span class="sig-name descname"><span class="pre">__lt__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">__x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#ansys.tools.versioning.utils.VersionMeta.__lt__" title="Permalink to this definition">#</a></dt>
+<dd><p>Less than.</p>
+<p>If compared against a string which contains ‘dev’ it will always evaluate to True.
+If compared against an int, it will perform a classic ‘less than’ operation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.tools.versioning.utils.VersionMeta.__ge__">
+<span class="sig-name descname"><span class="pre">__ge__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">__x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#ansys.tools.versioning.utils.VersionMeta.__ge__" title="Permalink to this definition">#</a></dt>
+<dd><p>Greater equal.</p>
+<p>If compared against a string which contains ‘dev’ it will always evaluate to False.
+If compared against an int, it will perform a classic ‘greater equal’ operation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.tools.versioning.utils.VersionMeta.__gt__">
+<span class="sig-name descname"><span class="pre">__gt__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">__x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#ansys.tools.versioning.utils.VersionMeta.__gt__" title="Permalink to this definition">#</a></dt>
+<dd><p>Greater than.</p>
+<p>If compared against a string which contains ‘dev’ it will always evaluate to False.
+If compared against an int, it will perform a classic ‘greater than’ operation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.tools.versioning.utils.VersionMeta.__eq__">
+<span class="sig-name descname"><span class="pre">__eq__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">__x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><span class="pre">object</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#ansys.tools.versioning.utils.VersionMeta.__eq__" title="Permalink to this definition">#</a></dt>
+<dd><p>Equal method.</p>
+<p>If compared against a string which contains ‘dev’ it will always evaluate to False.
+If compared against an int, it will perform a classic ‘equal’ operation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.tools.versioning.utils.VersionMeta.__ne__">
+<span class="sig-name descname"><span class="pre">__ne__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">__x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><span class="pre">object</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#ansys.tools.versioning.utils.VersionMeta.__ne__" title="Permalink to this definition">#</a></dt>
+<dd><p>Not equal.</p>
+<p>If compared against a string which contains ‘dev’ it will always evaluate to not
+‘equal’ operation (True). If compared against an int, it will perform a classic ‘not equal’ operation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.tools.versioning.utils.VersionMeta.__hash__">
+<span class="sig-name descname"><span class="pre">__hash__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></span><a class="headerlink" href="#ansys.tools.versioning.utils.VersionMeta.__hash__" title="Permalink to this definition">#</a></dt>
+<dd><p>Call the underlying __hash__ method.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.tools.versioning.utils.SemanticVersion">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.tools.versioning.utils.</span></span><span class="sig-name descname"><span class="pre">SemanticVersion</span></span><a class="headerlink" href="#ansys.tools.versioning.utils.SemanticVersion" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple</span></code></a></p>
+<p>Class for semantic versioning.</p>
+<p>It is a subclass of tuple and can be instantiated from a string or a tuple.</p>
+<p>You can use ‘dev’ in the patch version, but nowhere else.</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="ansys.tools.versioning.utils.SemanticVersion.major">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">major</span></span><a class="headerlink" href="#ansys.tools.versioning.utils.SemanticVersion.major" title="Permalink to this definition">#</a></dt>
+<dd><p>Return major version number.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ansys.tools.versioning.utils.SemanticVersion.minor">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">minor</span></span><a class="headerlink" href="#ansys.tools.versioning.utils.SemanticVersion.minor" title="Permalink to this definition">#</a></dt>
+<dd><p>Return minor version number.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ansys.tools.versioning.utils.SemanticVersion.patch">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">patch</span></span><a class="headerlink" href="#ansys.tools.versioning.utils.SemanticVersion.patch" title="Permalink to this definition">#</a></dt>
+<dd><p>Return patch version number.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.tools.versioning.utils.SemanticVersion.as_string">
+<span class="sig-name descname"><span class="pre">as_string</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.tools.versioning.utils.SemanticVersion.as_string" title="Permalink to this definition">#</a></dt>
+<dd><p>Return the version as string.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.tools.versioning.utils.SemanticVersion.as_tuple">
+<span class="sig-name descname"><span class="pre">as_tuple</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.tools.versioning.utils.SemanticVersion.as_tuple" title="Permalink to this definition">#</a></dt>
+<dd><p>Return the version as tuple.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.tools.versioning.utils.SemanticVersion.as_list">
+<span class="sig-name descname"><span class="pre">as_list</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.tools.versioning.utils.SemanticVersion.as_list" title="Permalink to this definition">#</a></dt>
+<dd><p>Return the version as list.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.tools.versioning.utils.SemanticVersion.as_dict">
+<span class="sig-name descname"><span class="pre">as_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.tools.versioning.utils.SemanticVersion.as_dict" title="Permalink to this definition">#</a></dt>
+<dd><p>Return the version as dict.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.tools.versioning.utils.mystr">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.tools.versioning.utils.</span></span><span class="sig-name descname"><span class="pre">mystr</span></span><a class="headerlink" href="#ansys.tools.versioning.utils.mystr" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ansys.tools.versioning.utils.VersionMeta" title="ansys.tools.versioning.utils.VersionMeta"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VersionMeta</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></p>
+<p>Custom class to hold strings for versioning.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.tools.versioning.utils.myint">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.tools.versioning.utils.</span></span><span class="sig-name descname"><span class="pre">myint</span></span><a class="headerlink" href="#ansys.tools.versioning.utils.myint" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ansys.tools.versioning.utils.VersionMeta" title="ansys.tools.versioning.utils.VersionMeta"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VersionMeta</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a></p>
+<p>Custom class to hold integers for versioning.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.tools.versioning.utils.VersionNumber">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.tools.versioning.utils.</span></span><span class="sig-name descname"><span class="pre">VersionNumber</span></span><a class="headerlink" href="#ansys.tools.versioning.utils.VersionNumber" title="Permalink to this definition">#</a></dt>
+<dd><p>Class for version comparison.</p>
+<p>This class can be instantiated from a string or an integer.
+The constructor will choose the corresponding class.</p>
+<p>Any combination of ‘dev’ and integers will be considered as a string.
+‘dev’ is considered as the highest version number possible.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ansys.tools.versioning.utils</span> <span class="kn">import</span> <span class="n">VersionNumber</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">VersionNumber</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">VersionNumber</span><span class="p">(</span><span class="s2">&quot;dev&quot;</span><span class="p">)</span>
+<span class="go">&#39;dev&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">VersionNumber</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">VersionNumber</span><span class="p">(</span><span class="s2">&quot;dev&quot;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">VersionNumber</span><span class="p">(</span><span class="mi">99999</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">VersionNumber</span><span class="p">(</span><span class="s2">&quot;dev&quot;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">VersionNumber</span><span class="p">(</span><span class="s2">&quot;dev&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="n">VersionNumber</span><span class="p">(</span><span class="s2">&quot;dev1&quot;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">VersionNumber</span><span class="p">(</span><span class="s2">&quot;dev&quot;</span><span class="p">)</span> <span class="o">!=</span> <span class="n">VersionNumber</span><span class="p">(</span><span class="s2">&quot;dev1&quot;</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ansys.tools.versioning.utils.valid_version_string">
+<span class="sig-prename descclassname"><span class="pre">ansys.tools.versioning.utils.</span></span><span class="sig-name descname"><span class="pre">valid_version_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">version</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.tools.versioning.utils.valid_version_string" title="Permalink to this definition">#</a></dt>
+<dd><p>Check if version string is valid.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ansys.tools.versioning.utils.valid_semantic_version">
+<span class="sig-prename descclassname"><span class="pre">ansys.tools.versioning.utils.</span></span><span class="sig-name descname"><span class="pre">valid_semantic_version</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iterable</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.tools.versioning.utils.valid_semantic_version" title="Permalink to this definition">#</a></dt>
+<dd><p>Check if a semantic version is valid.</p>
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.tools.versioning.utils.sanitize_version_string"><code class="docutils literal notranslate"><span class="pre">sanitize_version_string()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.tools.versioning.utils.sanitize_version_tuple"><code class="docutils literal notranslate"><span class="pre">sanitize_version_tuple()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.tools.versioning.utils.version_string_as_tuple"><code class="docutils literal notranslate"><span class="pre">version_string_as_tuple()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.tools.versioning.utils.version_tuple_as_string"><code class="docutils literal notranslate"><span class="pre">version_tuple_as_string()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.tools.versioning.utils.server_meets_version"><code class="docutils literal notranslate"><span class="pre">server_meets_version()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.tools.versioning.utils.requires_version"><code class="docutils literal notranslate"><span class="pre">requires_version()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.tools.versioning.utils.VersionMeta"><code class="docutils literal notranslate"><span class="pre">VersionMeta</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.tools.versioning.utils.VersionMeta.__le__"><code class="docutils literal notranslate"><span class="pre">VersionMeta.__le__()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.tools.versioning.utils.VersionMeta.__lt__"><code class="docutils literal notranslate"><span class="pre">VersionMeta.__lt__()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.tools.versioning.utils.VersionMeta.__ge__"><code class="docutils literal notranslate"><span class="pre">VersionMeta.__ge__()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.tools.versioning.utils.VersionMeta.__gt__"><code class="docutils literal notranslate"><span class="pre">VersionMeta.__gt__()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.tools.versioning.utils.VersionMeta.__eq__"><code class="docutils literal notranslate"><span class="pre">VersionMeta.__eq__()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.tools.versioning.utils.VersionMeta.__ne__"><code class="docutils literal notranslate"><span class="pre">VersionMeta.__ne__()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.tools.versioning.utils.VersionMeta.__hash__"><code class="docutils literal notranslate"><span class="pre">VersionMeta.__hash__()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.tools.versioning.utils.SemanticVersion"><code class="docutils literal notranslate"><span class="pre">SemanticVersion</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.tools.versioning.utils.SemanticVersion.major"><code class="docutils literal notranslate"><span class="pre">SemanticVersion.major</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.tools.versioning.utils.SemanticVersion.minor"><code class="docutils literal notranslate"><span class="pre">SemanticVersion.minor</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.tools.versioning.utils.SemanticVersion.patch"><code class="docutils literal notranslate"><span class="pre">SemanticVersion.patch</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.tools.versioning.utils.SemanticVersion.as_string"><code class="docutils literal notranslate"><span class="pre">SemanticVersion.as_string()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.tools.versioning.utils.SemanticVersion.as_tuple"><code class="docutils literal notranslate"><span class="pre">SemanticVersion.as_tuple()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.tools.versioning.utils.SemanticVersion.as_list"><code class="docutils literal notranslate"><span class="pre">SemanticVersion.as_list()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.tools.versioning.utils.SemanticVersion.as_dict"><code class="docutils literal notranslate"><span class="pre">SemanticVersion.as_dict()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.tools.versioning.utils.mystr"><code class="docutils literal notranslate"><span class="pre">mystr</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.tools.versioning.utils.myint"><code class="docutils literal notranslate"><span class="pre">myint</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.tools.versioning.utils.VersionNumber"><code class="docutils literal notranslate"><span class="pre">VersionNumber</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.tools.versioning.utils.valid_version_string"><code class="docutils literal notranslate"><span class="pre">valid_version_string()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.tools.versioning.utils.valid_semantic_version"><code class="docutils literal notranslate"><span class="pre">valid_semantic_version()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div class="tocsection sourcelink">
+    <a href="../../../../../_sources/autoapi/ansys/tools/versioning/utils/index.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+  <p class="copyright">
+    
+      © Copyright (c) 2023 ANSYS, Inc. All rights reserved.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.0.1.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+    Built with the <a href="https://sphinxdocs.ansys.com/version/stable/index.html">Ansys Sphinx Theme</a> 0.9.9.
+    <br>Last updated on <span id="date"></span></br>
+</p>
+<script>
+  var options = { day: 'numeric', month: 'long', year: 'numeric' };
+  var lastModifiedDate = new Date(document.lastModified);
+  var date = lastModifiedDate.toLocaleDateString('en-US', options);
+  document.getElementById("date").innerHTML = date;
+</script></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
