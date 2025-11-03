@@ -22,7 +22,7 @@
 
 """A module containing custom exceptions."""
 
-from ansys.tools.common.versioning import *
+from ansys.tools.common.versioning import VersionSyntaxError, VersionError #noqa
 
 import warnings
 
