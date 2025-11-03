@@ -2,7 +2,7 @@
 =====================================
 
 **This library is deprecated and will no longer be maintained. Please consider using alternatives. For more information check** 
-`this issue <https://github.com/ansys/pyansys-tools-versioning/issues/417>`.
+`this issue <https://github.com/ansys/pyansys-tools-versioning/issues/417>`_.
 
 |pyansys| |python| |pypi| |GH-CI| |codecov| |MIT| |black| |pre-commit|
 
