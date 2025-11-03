@@ -30,3 +30,12 @@ from ansys.tools.common.versioning import requires_version, server_meets_version
 
 __version__ = importlib_metadata.version("pyansys-tools-versioning")
 __all__ = ["requires_version", "server_meets_version"]
+
+import warnings
+
+warnings.warn(
+    "This library is deprecated and will no longer be maintained. "
+    "Please consider using alternatives. "
+    "For more information check https://github.com/ansys/pyansys-tools-versioning/issues/417",
+    DeprecationWarning,
+)
