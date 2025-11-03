@@ -22,32 +22,14 @@
 
 """A module containing custom exceptions."""
 
+import warnings
 
-class VersionSyntaxError(Exception):
-    """An exception to be raised when an invalid version syntax is found."""
+from ansys.tools.common.versioning import VersionError, VersionSyntaxError  # noqa
 
-    def __init__(self, msg):
-        """Initialize the exception.
-
-        Parameters
-        ----------
-        msg : str
-            The message to be raised for the exception.
-
-        """
-        super().__init__(msg)
-
-
-class VersionError(Exception):
-    """An exception to be raised when a version is not valid."""
-
-    def __init__(self, msg):
-        """Initialize the exception.
-
-        Parameters
-        ----------
-        msg : str
-            The message to be raised for the exception.
-
-        """
-        super().__init__(msg)
+warnings.warn(
+    "This library is deprecated and will no longer be maintained. "
+    "Functionality from this library has been migrated to ``ansys-tools-common``. "
+    "Please consider migrating to ``ansys-tools-common``. "
+    "For more information check https://github.com/ansys/pyansys-tools-versioning/issues/417",
+    DeprecationWarning,
+)

@@ -27,7 +27,17 @@ Utilities for backwards and forwards server support.
 """
 import importlib.metadata as importlib_metadata
 
-from ansys.tools.versioning.utils import requires_version, server_meets_version
+from ansys.tools.common.versioning import requires_version, server_meets_version
 
 __version__ = importlib_metadata.version("pyansys-tools-versioning")
 __all__ = ["requires_version", "server_meets_version"]
+
+import warnings
+
+warnings.warn(
+    "This library is deprecated and will no longer be maintained. "
+    "Functionality from this library has been migrated to ``ansys-tools-common``. "
+    "Please consider migrating to ``ansys-tools-common``. "
+    "For more information check https://github.com/ansys/pyansys-tools-versioning/issues/417",
+    DeprecationWarning,
+)

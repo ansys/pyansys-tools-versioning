@@ -52,6 +52,8 @@ extensions = [
     "ansys_sphinx_theme.extension.autoapi",
 ]
 
+suppress_warnings = ["autoapi.python_import_resolution"]
+
 # Intersphinx mapping
 intersphinx_mapping = {
     "python": ("https://docs.python.org/3", None),
