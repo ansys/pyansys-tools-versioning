@@ -26,6 +26,7 @@ PyAnsys Tools Versioning.
 Utilities for backwards and forwards server support.
 """
 import importlib.metadata as importlib_metadata
+
 from ansys.tools.common.versioning import requires_version, server_meets_version
 
 __version__ = importlib_metadata.version("pyansys-tools-versioning")
