@@ -25,7 +25,9 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
-dependencies = []
+dependencies = [
+    "ansys-tools-common"
+]
 
 [project.optional-dependencies]
 tests = [
