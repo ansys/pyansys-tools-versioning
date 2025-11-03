@@ -1,0 +1,45 @@
+
+
+:class:`VersionSyntaxError`
+===========================
+
+.. py:exception:: ansys.tools.versioning.exceptions.VersionSyntaxError(msg)
+
+   Bases: :py:obj:`Exception`
+
+
+   
+   An exception to be raised when an invalid version syntax is found.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.tools.versioning.exceptions import VersionSyntaxError
+
+
+
+
+
+

@@ -1,0 +1,46 @@
+
+
+
+
+
+
+The ``exceptions.py`` module
+============================
+
+.. py:module:: ansys.tools.versioning.exceptions
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+A module containing custom exceptions.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+

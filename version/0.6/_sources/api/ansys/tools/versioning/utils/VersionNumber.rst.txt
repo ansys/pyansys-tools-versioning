@@ -1,0 +1,62 @@
+
+
+:class:`VersionNumber`
+======================
+
+.. py:class:: ansys.tools.versioning.utils.VersionNumber
+
+   
+   Class for version comparison.
+
+   This class can be instantiated from a string or an integer.
+   The constructor will choose the corresponding class.
+
+   Any combination of 'dev' and integers will be considered as a string.
+   'dev' is considered as the highest version number possible.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   .. rubric:: Examples
+
+   >>> from ansys.tools.versioning.utils import VersionNumber
+   >>> VersionNumber(1)
+   1
+   >>> VersionNumber("dev")
+   'dev'
+   >>> VersionNumber(1) <= VersionNumber("dev")
+   True
+   >>> VersionNumber(99999) >= VersionNumber("dev")
+   False
+   >>> VersionNumber("dev") == VersionNumber("dev1")
+   False
+   >>> VersionNumber("dev") != VersionNumber("dev1")
+   True
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.tools.versioning.utils import VersionNumber
+
+
+
+
+
+

@@ -1,0 +1,253 @@
+
+
+:class:`SemanticVersion`
+========================
+
+.. py:class:: ansys.tools.versioning.utils.SemanticVersion
+
+   Bases: :py:obj:`tuple`
+
+
+   
+   Class for semantic versioning.
+
+   It is a subclass of tuple and can be instantiated from a string or a tuple.
+
+   You can use 'dev' in the patch version, but nowhere else.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: SemanticVersion
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+   .. tab-item:: Methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~as_string`
+            - Return the version as string.
+          * - :py:attr:`~as_tuple`
+            - Return the version as tuple.
+          * - :py:attr:`~as_list`
+            - Return the version as list.
+          * - :py:attr:`~as_dict`
+            - Return the version as dict.
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~major`
+            - Return major version number.
+          * - :py:attr:`~minor`
+            - Return minor version number.
+          * - :py:attr:`~patch`
+            - Return patch version number.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.tools.versioning.utils import SemanticVersion
+
+Property detail
+---------------
+.. py:property:: major
+   
+   Return major version number.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: minor
+   
+   Return minor version number.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: patch
+   
+   Return patch version number.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+Method detail
+-------------
+.. py:method:: as_string()
+
+   
+   Return the version as string.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: as_tuple()
+
+   
+   Return the version as tuple.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: as_list()
+
+   
+   Return the version as list.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: as_dict()
+
+   
+   Return the version as dict.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+

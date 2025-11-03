@@ -1,0 +1,98 @@
+
+
+
+
+
+
+The ``ansys.tools.versioning`` library
+======================================
+
+.. py:module:: ansys.tools.versioning
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+.. py:currentmodule:: versioning
+.. tab-set::
+
+
+    .. tab-item:: Submodules
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.tools.versioning.exceptions`
+            - A module containing custom exceptions.
+
+
+          * - :py:obj:`~ansys.tools.versioning.utils`
+            - A module containing various utilities.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-fa-file"></span> exceptions</api/ansys/tools/versioning/exceptions/index>
+    <span class="nf nf-fa-file"></span> utils</api/ansys/tools/versioning/utils/index>
+
+
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+
+PyAnsys Tools Versioning.
+
+Utilities for backwards and forwards server support.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+

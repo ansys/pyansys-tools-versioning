@@ -1,0 +1,66 @@
+:py:mod:`ansys.tools.versioning.exceptions`
+===========================================
+
+.. py:module:: ansys.tools.versioning.exceptions
+
+.. autoapi-nested-parse::
+
+   A module containing custom exceptions.
+
+   ..
+       !! processed by numpydoc !!
+
+
+Module Contents
+---------------
+
+.. py:exception:: VersionSyntaxError(msg)
+
+   Bases: :py:obj:`Exception`
+
+   
+   An exception to be raised when an invalid version syntax is found.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:exception:: VersionError(msg)
+
+   Bases: :py:obj:`Exception`
+
+   
+   An exception to be raised when a version is not valid.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
