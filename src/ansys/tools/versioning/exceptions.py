@@ -22,9 +22,9 @@
 
 """A module containing custom exceptions."""
 
-from ansys.tools.common.versioning import *
-
 import warnings
+
+from ansys.tools.common.versioning import *
 
 warnings.warn(
     "This library is deprecated and will no longer be maintained. "
