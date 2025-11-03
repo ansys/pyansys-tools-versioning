@@ -24,7 +24,7 @@
 
 import warnings
 
-from ansys.tools.common.versioning import *
+from ansys.tools.common.versioning import *  # noqa
 
 warnings.warn(
     "This library is deprecated and will no longer be maintained. "
